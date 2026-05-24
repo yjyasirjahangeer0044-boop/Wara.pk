@@ -263,6 +263,122 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
   .section{padding:36px 14px;}
   .reels-grid{grid-template-columns:1fr;}
 }
+
+/* ── RECENTLY VIEWED ───────────────────────────────── */
+.rv-section{padding:40px 28px;background:var(--warm-white);border-top:1px solid var(--border);}
+.rv-title{font-family:var(--f-display);font-size:22px;font-weight:400;color:var(--dark);margin-bottom:20px;}
+.rv-scroll{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.rv-scroll::-webkit-scrollbar{display:none;}
+.rv-card{flex-shrink:0;width:160px;cursor:pointer;transition:transform .25s;}
+.rv-card:hover{transform:translateY(-3px);}
+.rv-card img{width:160px;height:213px;object-fit:cover;background:#F0E8E0;display:block;}
+.rv-card-name{font-size:12px;color:var(--dark);margin-top:7px;line-height:1.4;}
+.rv-card-price{font-size:12px;color:var(--maroon);font-weight:500;margin-top:3px;}
+
+/* ── BUNDLE OFFER ──────────────────────────────────── */
+.bundle-section{background:linear-gradient(135deg,#1A0B0B 0%,#3D1515 50%,#1A0B0B 100%);padding:52px 28px;}
+.bundle-inner{max-width:1100px;margin:0 auto;}
+.bundle-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.bundle-title{font-family:var(--f-display);font-size:32px;font-weight:400;color:white;margin-bottom:8px;}
+.bundle-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:32px;letter-spacing:.5px;}
+.bundle-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.bundle-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);padding:22px;display:flex;gap:14px;cursor:pointer;transition:all .3s;position:relative;}
+.bundle-card:hover{background:rgba(255,255,255,.10);border-color:rgba(201,168,76,.6);}
+.bundle-card-imgs{display:flex;gap:6px;}
+.bundle-card-imgs img{width:70px;height:93px;object-fit:cover;background:#2A0D0D;}
+.bundle-card-info{flex:1;}
+.bundle-card-title{font-family:var(--f-display);font-size:15px;color:white;font-weight:400;margin-bottom:6px;}
+.bundle-card-items{font-size:11px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:10px;}
+.bundle-price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.bundle-now{font-size:17px;font-weight:600;color:var(--gold);}
+.bundle-was{font-size:12px;color:rgba(255,255,255,.35);text-decoration:line-through;}
+.bundle-save-tag{font-size:10px;background:var(--gold);color:#1A0B0B;padding:3px 8px;font-weight:700;letter-spacing:1px;}
+.bundle-btn{margin-top:12px;width:100%;padding:10px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--f-body);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.bundle-btn:hover{background:var(--gold);color:#1A0B0B;}
+.bundle-badge{position:absolute;top:-10px;right:16px;background:var(--gold);color:#1A0B0B;font-size:9px;padding:4px 12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+
+/* ── TRACKING PAGE ─────────────────────────────────── */
+.track-page{background:var(--cream);min-height:80vh;padding:56px 28px;}
+.track-inner{max-width:620px;margin:0 auto;}
+.track-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.track-title{font-family:var(--f-display);font-size:34px;font-weight:400;color:var(--dark);margin-bottom:8px;}
+.track-sub{font-size:13px;color:var(--muted);margin-bottom:36px;line-height:1.7;}
+.track-form{display:flex;gap:0;margin-bottom:32px;}
+.track-form input{flex:1;border:1.5px solid var(--border);border-right:none;padding:14px 18px;font-family:var(--f-body);font-size:14px;color:var(--text);outline:none;background:white;}
+.track-form input:focus{border-color:var(--maroon);}
+.track-form button{background:var(--maroon);color:white;border:none;padding:14px 24px;font-family:var(--f-body);font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .3s;}
+.track-form button:hover{background:var(--maroon-l);}
+.track-result{display:none;background:white;border:1px solid var(--border);padding:28px;}
+.track-result.show{display:block;}
+.track-order-id{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.track-order-name{font-family:var(--f-display);font-size:18px;color:var(--dark);margin-bottom:20px;}
+.track-steps{position:relative;padding-left:28px;}
+.track-steps::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:1px;background:var(--border);}
+.track-step{position:relative;padding:0 0 24px 20px;display:flex;align-items:flex-start;gap:12px;}
+.track-step:last-child{padding-bottom:0;}
+.track-dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;position:absolute;left:-28px;display:flex;align-items:center;justify-content:center;}
+.track-dot.done{background:var(--maroon);}
+.track-dot.active{background:var(--gold);animation:pulse-dot 1.5s infinite;}
+.track-dot.pending{background:white;border:2px solid var(--border);}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4);}50%{box-shadow:0 0 0 6px rgba(201,168,76,0);}}
+.track-dot svg{width:10px;height:10px;}
+.track-step-title{font-size:13px;font-weight:500;color:var(--dark);}
+.track-step-title.pending{color:var(--muted);}
+.track-step-date{font-size:11px;color:var(--muted);margin-top:2px;}
+.track-wa-help{margin-top:24px;display:flex;align-items:center;gap:10px;padding:14px;background:#F0FFF4;border:1px solid #B2DFDB;}
+.track-wa-help p{font-size:12px;color:#2D7A2D;}
+.track-wa-help a{color:var(--maroon);text-decoration:none;font-weight:500;}
+.track-not-found{display:none;text-align:center;padding:32px;color:var(--muted);}
+.track-not-found.show{display:block;}
+.track-not-found p{font-family:var(--f-display);font-style:italic;font-size:17px;margin-bottom:8px;}
+
+/* ── WAX SEAL BADGE ──────────────────────────────── */
+.wax-seal{position:absolute;bottom:10px;right:10px;width:56px;height:56px;z-index:2;pointer-events:none;}
+.wax-seal svg{width:56px;height:56px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));}
+.wax-seal-txt{font-size:6.5px;font-family:var(--f-display);font-weight:700;fill:#FAF0DC;letter-spacing:.8px;}
+
+/* ── LIFESTYLE STRIP ─────────────────────────────── */
+.lifestyle-strip{overflow:hidden;position:relative;background:var(--dark);height:200px;}
+.lifestyle-track{display:flex;width:max-content;animation:scroll-x 55s linear infinite;height:200px;}
+.lifestyle-track:hover{animation-play-state:paused;}
+.lifestyle-item{width:260px;height:200px;flex-shrink:0;position:relative;overflow:hidden;}
+.lifestyle-item img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s;}
+.lifestyle-item:hover img{opacity:1;}
+.lifestyle-item-label{position:absolute;bottom:12px;left:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);font-family:var(--f-body);}
+.lifestyle-strip-overlay{position:absolute;top:0;left:0;width:120px;height:100%;background:linear-gradient(to right,var(--dark),transparent);z-index:1;pointer-events:none;}
+.lifestyle-strip-overlay-r{position:absolute;top:0;right:0;width:120px;height:100%;background:linear-gradient(to left,var(--dark),transparent);z-index:1;pointer-events:none;}
+
+/* ── COUNTDOWN TIMER ─────────────────────────────── */
+.drop-timer{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 28px;}
+.drop-timer-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.drop-left{flex:1;}
+.drop-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.drop-title{font-family:var(--f-display);font-size:24px;font-weight:400;color:var(--dark);margin-bottom:4px;}
+.drop-sub{font-size:12px;color:var(--muted);}
+.drop-right{display:flex;gap:12px;align-items:center;}
+.drop-unit{text-align:center;min-width:64px;}
+.drop-num{font-family:var(--f-display);font-size:42px;font-weight:400;color:var(--maroon);line-height:1;display:block;}
+.drop-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
+.drop-sep{font-family:var(--f-display);font-size:36px;color:var(--border);line-height:1;padding-top:4px;}
+.drop-notify{background:var(--maroon);color:white;border:none;padding:12px 24px;font-family:var(--f-body);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:12px;display:block;}
+.drop-notify:hover{background:var(--maroon-l);}
+@media(max-width:700px){.drop-timer-inner{flex-direction:column;text-align:center;}.drop-right{justify-content:center;}.drop-notify{margin:0 auto;}}
+
+/* ── FLOATING IMPACT COUNTER ─────────────────────── */
+.impact-float{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:800;transition:opacity .4s,transform .4s;opacity:0;pointer-events:none;}
+.impact-float.visible{opacity:1;pointer-events:all;}
+.impact-tab{background:var(--maroon);color:white;padding:10px 14px 10px 10px;cursor:pointer;border-radius:0 6px 6px 0;display:flex;align-items:center;gap:8px;box-shadow:2px 2px 12px rgba(0,0,0,.25);transition:padding .3s;}
+.impact-tab:hover{padding-right:18px;}
+.impact-tab-icon{width:18px;height:18px;flex-shrink:0;}
+.impact-panel{background:var(--dark);color:white;padding:20px 18px;border-radius:0 8px 8px 0;min-width:180px;display:none;}
+.impact-float.open .impact-panel{display:block;}
+.impact-float.open .impact-tab{border-radius:0 0 0 0;}
+.impact-stat-row{margin-bottom:14px;}
+.impact-stat-row:last-child{margin-bottom:0;}
+.impact-num{font-family:var(--f-display);font-size:26px;color:var(--gold);display:block;line-height:1;}
+.impact-lbl{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;margin-top:3px;display:block;}
+.impact-close{width:100%;background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;margin-top:16px;padding:6px 0;border-top:1px solid rgba(255,255,255,.1);}
+.impact-close:hover{color:white;}
 </style>
 </head>
 <body>
@@ -347,6 +463,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
       <li><a href="#" onclick="filterCat(null,'festive');toggleMenu();return false;">Festive Wear</a></li>
       <li><a href="#" onclick="showArtisanPage();toggleMenu();return false;">Our Journey</a></li>
       <li><a href="#" onclick="showArtisanPage();toggleMenu();return false;">Artisan Stories</a></li>
+      <li><a href="#" onclick="showTrackPage();toggleMenu();return false;">Track Order</a></li>
       <li><a href="https://wa.me/923371856840" target="_blank">Customer Care</a></li>
     </ul>
     <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--border);">
@@ -406,10 +523,31 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
     <div class="hero-content">
       <p class="hero-eyebrow">New Season · Handcrafted in Pakistan</p>
       <h1 class="hero-title">Your Shopping is an<br><em>Investment in Her Future</em></h1>
-      <p class="hero-sub">Each piece crafted by the extraordinary women of marginalized Pakistan</p>
-      <a href="#newIn" class="btn-gold">Discover the Collection</a>
+      <p class="hero-sub">Beautiful handcrafted dresses, fair prices, hardworking women, real impact.</p>
+      <a href="#newIn" class="btn-gold" onclick="filterCat(null,'all');return true;">Meet the Collection</a>
     </div>
   </section>
+
+
+  <!-- LIFESTYLE STRIP -->
+  <div class="lifestyle-strip">
+    <div class="lifestyle-strip-overlay"></div>
+    <div class="lifestyle-strip-overlay-r"></div>
+    <div class="lifestyle-track" id="lifestyleTrack">
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&q=75" alt="Embroidery detail"><p class="lifestyle-item-label">Hand Embroidery</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=75" alt="Fabric texture"><p class="lifestyle-item-label">Pure Lawn Fabric</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&q=75" alt="Artisan at work"><p class="lifestyle-item-label">Artisan Craft</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=75" alt="Flowing fabric"><p class="lifestyle-item-label">Heritage Weave</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=75" alt="Traditional wear"><p class="lifestyle-item-label">Traditional Craft</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=400&q=75" alt="Collection"><p class="lifestyle-item-label">New Collection</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&q=75" alt="Embroidery detail"><p class="lifestyle-item-label">Hand Embroidery</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=75" alt="Fabric texture"><p class="lifestyle-item-label">Pure Lawn Fabric</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&q=75" alt="Artisan at work"><p class="lifestyle-item-label">Artisan Craft</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=75" alt="Flowing fabric"><p class="lifestyle-item-label">Heritage Weave</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=75" alt="Traditional wear"><p class="lifestyle-item-label">Traditional Craft</p></div>
+      <div class="lifestyle-item"><img src="https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=400&q=75" alt="Collection"><p class="lifestyle-item-label">New Collection</p></div>
+    </div>
+  </div>
 
   <!-- SEARCH -->
   <div class="search-wrap-outer">
@@ -432,6 +570,28 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
     <button class="hpill" onclick="filterCat(this,'festive')">Festive</button>
   </div>
 
+
+  <!-- COUNTDOWN DROP TIMER -->
+  <div class="drop-timer">
+    <div class="drop-timer-inner">
+      <div class="drop-left">
+        <p class="drop-eyebrow">Upcoming · Summer Drop 2025</p>
+        <h3 class="drop-title">Gulshan Collection — Dropping Soon</h3>
+        <p class="drop-sub">A new chapter in handcrafted luxury. Limited pieces, crafted by our artisans.</p>
+        <button class="drop-notify" onclick="window.open('https://wa.me/923371856840?text=Hi!+Please+notify+me+when+the+new+collection+drops+🌸','_blank')">Notify Me on WhatsApp</button>
+      </div>
+      <div class="drop-right">
+        <div class="drop-unit"><span class="drop-num" id="dropDays">00</span><span class="drop-lbl">Days</span></div>
+        <span class="drop-sep">:</span>
+        <div class="drop-unit"><span class="drop-num" id="dropHrs">00</span><span class="drop-lbl">Hours</span></div>
+        <span class="drop-sep">:</span>
+        <div class="drop-unit"><span class="drop-num" id="dropMin">00</span><span class="drop-lbl">Mins</span></div>
+        <span class="drop-sep">:</span>
+        <div class="drop-unit"><span class="drop-num" id="dropSec">00</span><span class="drop-lbl">Secs</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- PRODUCTS -->
   <div class="section" id="newIn">
     <div class="section-hdr">
@@ -440,6 +600,15 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
     </div>
     <div class="product-grid" id="productGrid"></div>
     <p id="noResults" style="display:none;text-align:center;padding:40px;color:var(--muted);font-family:var(--f-display);font-style:italic;font-size:18px;">No products found.</p>
+  </div>
+
+
+  <!-- RECENTLY VIEWED -->
+  <div class="rv-section" id="rvSection" style="display:none;">
+    <div style="max-width:1440px;margin:0 auto;">
+      <h3 class="rv-title">Recently Viewed</h3>
+      <div class="rv-scroll" id="rvScroll"></div>
+    </div>
   </div>
 
   <!-- TESTIMONIALS -->
@@ -456,6 +625,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
         <div class="testi-item"><p class="testi-quote">"WARA ne mujhe ghar se kaam karne ka moka diya"</p><p class="testi-name">— Nadia, Craft Artisan</p></div>
         <div class="testi-item"><p class="testi-quote">"Ab mein apnay khandan ki madad kar sakti hoon"</p><p class="testi-name">— Rubina, Embroidery Specialist</p></div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- BUNDLE OFFERS -->
+  <section class="bundle-section">
+    <div class="bundle-inner">
+      <p class="bundle-eyebrow">Special Combinations</p>
+      <h2 class="bundle-title">Bundle & Save</h2>
+      <p class="bundle-sub">Pair your favourites — handpicked combinations crafted to complement each other</p>
+      <div class="bundle-cards" id="bundleCards"></div>
     </div>
   </section>
 
@@ -536,7 +716,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
         <p class="footer-desc">Every purchase empowers a woman from Pakistan's most underserved communities. Wear art. Wear purpose. Create change.</p>
         <p class="power-eyebrow">Power of Your Purchase</p>
         <div class="power-grid">
-          <div class="power-stat"><div class="power-num">500+</div><div class="power-lbl">Artisans trained from marginalized communities</div></div>
+          <div class="power-stat"><div class="power-num">30+</div><div class="power-lbl">Women trained from marginalized communities</div></div>
           <div class="power-stat"><div class="power-num">30%</div><div class="power-lbl">More wages than market rate</div></div>
           <div class="power-stat"><div class="power-num">100%</div><div class="power-lbl">Women empowered to work from home</div></div>
           <div class="power-stat"><div class="power-num">∞</div><div class="power-lbl">Heritage craft kept alive</div></div>
@@ -563,7 +743,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
         <ul>
           <li><a href="https://wa.me/923371856840" target="_blank">Track Order</a></li>
           <li><a href="#" onclick="document.getElementById('sizeModal').classList.add('open');return false;">Size Guide</a></li>
-          <li><a href="https://wa.me/923371856840" target="_blank">Customer Care</a></li>
+          <li><a href="#" onclick="showTrackPage();toggleMenu();return false;">Track Order</a></li>
+      <li><a href="https://wa.me/923371856840" target="_blank">Customer Care</a></li>
           <li><a href="https://wa.me/923371856840" target="_blank">Returns Policy</a></li>
         </ul>
       </div>
@@ -748,6 +929,7 @@ function renderProducts(arr){
       <div class="product-img-wrap">
         <img src="${p.imgs[0]}" alt="${p.name}" loading="lazy">
         ${p.badge?`<div class="prod-badge ${p.badgeCls}">${p.badge}</div>`:''}
+        <div class="wax-seal"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 2 L31 10 L39 6 L37 14 L45 15 L40 21 L47 26 L40 31 L45 37 L37 38 L39 46 L31 42 L28 50 L25 42 L17 46 L19 38 L11 37 L16 31 L9 26 L16 21 L11 15 L19 14 L17 6 L25 10 Z" fill="#6B1F1F"/><path d="M28 4 L30.8 11.5 L38.2 7.8 L36.3 15.2 L43.8 16.2 L39.2 21.8 L45.8 26 L39.2 30.2 L43.8 35.8 L36.3 36.8 L38.2 44.2 L30.8 40.5 L28 48 L25.2 40.5 L17.8 44.2 L19.7 36.8 L12.2 35.8 L16.8 30.2 L10.2 26 L16.8 21.8 L12.2 16.2 L19.7 15.2 L17.8 7.8 L25.2 11.5 Z" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="0.8"/><text x="28" y="22" text-anchor="middle" class="wax-seal-txt">HAND</text><text x="28" y="30" text-anchor="middle" class="wax-seal-txt">CRAFTED</text><text x="28" y="38" text-anchor="middle" class="wax-seal-txt">✦ WARA ✦</text></svg></div>
         <div class="prod-actions">
           <button class="prod-act-btn" onclick="addWish(event)" aria-label="Wishlist">
             <svg width="15" height="14" viewBox="0 0 20 18" fill="none"><path d="M10 16.5C10 16.5 1.5 11 1.5 5.5C1.5 3.01 3.51 1 6 1C7.74 1 9.26 2 10 3.5C10.74 2 12.26 1 14 1C16.49 1 18.5 3.01 18.5 5.5C18.5 11 10 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -777,7 +959,200 @@ function filterCat(btn,cat){
   renderProducts(cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===cat));
 }
 function searchProducts(q){
-  if(!q.trim()){renderProducts(PRODUCTS);return;}
+  if(!q.trim()){
+// ── RECENTLY VIEWED ────────────────────────────────
+var recentlyViewed=[];
+function addToRecentlyViewed(pid){
+  recentlyViewed=recentlyViewed.filter(function(i){return i!==pid;});
+  recentlyViewed.unshift(pid);
+  if(recentlyViewed.length>6) recentlyViewed=recentlyViewed.slice(0,6);
+  renderRecentlyViewed();
+}
+function renderRecentlyViewed(){
+  if(recentlyViewed.length<2){document.getElementById('rvSection').style.display='none';return;}
+  document.getElementById('rvSection').style.display='block';
+  var scroll=document.getElementById('rvScroll');
+  scroll.innerHTML=recentlyViewed.map(function(pid){
+    var p=PRODUCTS.find(function(x){return x.id===pid;});
+    if(!p)return '';
+    return '<div class="rv-card" onclick="openProduct(''+pid+'')"><img src="'+p.imgs[0]+'" alt="'+p.name+'"><p class="rv-card-name">'+p.name+'</p><p class="rv-card-price">PKR '+p.price.toLocaleString()+'</p></div>';
+  }).join('');
+}
+
+// ── BUNDLE OFFERS ──────────────────────────────────
+var BUNDLES=[
+  {
+    title:'Garden Bloom Bundle',
+    items:['Bloom Embroidered Lawn Suit','Kiran Silk Dupatta'],
+    products:['ESL03'],
+    originalTotal: 4667+3200,
+    discount:10,
+    tag:'Most Popular'
+  },
+  {
+    title:'Festive Elegance Set',
+    items:['Burgundy Tiered Maxi with Potli','Farida Printed Dupatta'],
+    products:['LC031'],
+    originalTotal: 5854+2800,
+    discount:10,
+    tag:'Festive Pick'
+  }
+];
+function renderBundles(){
+  var cont=document.getElementById('bundleCards');
+  if(!cont)return;
+  cont.innerHTML=BUNDLES.map(function(b,i){
+    var discPrice=Math.round(b.originalTotal*(1-b.discount/100));
+    var p=PRODUCTS.find(function(x){return x.id===b.products[0];});
+    var imgSrc=p?p.imgs[0]:'';
+    return '<div class="bundle-card" onclick="bundleWhatsApp('+i+')">'
+      +(b.tag?'<div class="bundle-badge">'+b.tag+'</div>':'')
+      +'<div class="bundle-card-imgs"><img src="'+imgSrc+'" alt="'+b.title+'"></div>'
+      +'<div class="bundle-card-info">'
+      +'<p class="bundle-card-title">'+b.title+'</p>'
+      +'<p class="bundle-card-items">'+b.items.join('<br>')+'</p>'
+      +'<div class="bundle-price-row">'
+      +'<span class="bundle-now">PKR '+discPrice.toLocaleString()+'</span>'
+      +'<span class="bundle-was">PKR '+b.originalTotal.toLocaleString()+'</span>'
+      +'<span class="bundle-save-tag">'+b.discount+'% OFF</span>'
+      +'</div>'
+      +'<button class="bundle-btn">Order Bundle via WhatsApp</button>'
+      +'</div></div>';
+  }).join('');
+}
+function bundleWhatsApp(i){
+  var b=BUNDLES[i];
+  var discPrice=Math.round(b.originalTotal*(1-b.discount/100));
+  var msg='Hi! I want to order the '+b.title+' bundle:\n'+b.items.join('\n')+'\nBundle Price: PKR '+discPrice.toLocaleString()+' ('+b.discount+'% off)';
+  window.open('https://wa.me/923371856840?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── WHATSAPP PRE-FILLED ORDER ──────────────────────
+function shopNowWhatsApp(pid,size,color){
+  var p=PRODUCTS.find(function(x){return x.id===pid;});
+  if(!p)return;
+  var sz=size||p.sizes[0];
+  var msg='Hi! I want to order:\n\n'
+    +'Product: '+p.name+'\n'
+    +'ID: #'+p.id+'\n'
+    +'Size: '+sz+'\n'
+    +'Color: '+(color||'As shown')+'\n'
+    +'Price: PKR '+p.price.toLocaleString()
+    +(p.was?'\nOriginal: PKR '+p.was.toLocaleString()+' ('+Math.round((1-p.price/p.was)*100)+'% off)':'')
+    +'\n\nPlease confirm my order. Thank you!';
+  window.open('https://wa.me/923371856840?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── ORDER TRACKING ─────────────────────────────────
+var DEMO_ORDERS={
+  'WR-2024-001':{name:'Bloom Embroidered Lawn Suit 3 Piece',status:2},
+  'WR-2024-002':{name:'Burgundy Tiered Maxi with Potli',status:3},
+  'WR-2024-003':{name:'Mustard Yellow Co-ord Set',status:1},
+  '03371856840':{name:'Your Recent Order',status:2},
+};
+var TRACK_STEPS=[
+  {label:'Order Confirmed',desc:'Your order has been received'},
+  {label:'Being Prepared',desc:'Our artisans are carefully packing your order'},
+  {label:'Shipped',desc:'Your order is on its way'},
+  {label:'Out for Delivery',desc:'Arriving today!'},
+  {label:'Delivered',desc:'Enjoy your WARA piece!'}
+];
+function showTrackPage(){
+  document.getElementById('homePage').classList.add('hidden');
+  document.getElementById('productPage').classList.add('hidden');
+  document.getElementById('artisanPage').classList.add('hidden');
+  document.getElementById('trackPage').classList.remove('hidden');
+  document.getElementById('trackResult').classList.remove('show');
+  document.getElementById('trackNotFound').classList.remove('show');
+  window.scrollTo(0,0);
+}
+function trackOrder(){
+  var val=document.getElementById('trackInput').value.trim();
+  if(!val)return;
+  var result=document.getElementById('trackResult');
+  var notFound=document.getElementById('trackNotFound');
+  result.classList.remove('show');
+  notFound.classList.remove('show');
+  var order=DEMO_ORDERS[val]||DEMO_ORDERS[val.toUpperCase()];
+  if(!order){notFound.classList.add('show');return;}
+  document.getElementById('trOrderId').textContent='ORDER #'+val.toUpperCase();
+  document.getElementById('trOrderName').textContent=order.name;
+  var stepsHtml=TRACK_STEPS.map(function(s,i){
+    var cls=i<order.status?'done':i===order.status?'active':'pending';
+    var icon=i<order.status?'<svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>':'';
+    return '<div class="track-step"><div class="track-dot '+cls+'">'+icon+'</div><div><p class="track-step-title'+(cls==='pending'?' pending':'')+'">'+s.label+'</p><p class="track-step-date">'+s.desc+'</p></div></div>';
+  }).join('');
+  document.getElementById('trSteps').innerHTML=stepsHtml;
+  result.classList.add('show');
+}
+
+// Init bundles on load
+window.addEventListener('DOMContentLoaded',function(){renderBundles();});
+
+
+// ── COUNTDOWN TIMER ────────────────────────────────
+(function(){
+  var dropDate = new Date();
+  dropDate.setDate(dropDate.getDate() + 12);
+  dropDate.setHours(dropDate.getHours() + 6, 30, 0, 0);
+  function pad(n){return n<10?'0'+n:String(n);}
+  function tick(){
+    var now=new Date(), diff=dropDate-now;
+    if(diff<=0){
+      ['dropDays','dropHrs','dropMin','dropSec'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent='00';});
+      return;
+    }
+    var d=Math.floor(diff/86400000), h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+    var el;
+    if((el=document.getElementById('dropDays')))el.textContent=pad(d);
+    if((el=document.getElementById('dropHrs')))el.textContent=pad(h);
+    if((el=document.getElementById('dropMin')))el.textContent=pad(m);
+    if((el=document.getElementById('dropSec')))el.textContent=pad(s);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// ── FLOATING IMPACT COUNTER ────────────────────────
+var impactVisible=false, impactOpen=false, impactAnimated=false;
+function toggleImpact(){
+  impactOpen=!impactOpen;
+  var panel=document.getElementById('impactPanel');
+  var fl=document.getElementById('impactFloat');
+  if(panel) panel.style.display=impactOpen?'block':'none';
+  if(fl) fl.classList.toggle('open',impactOpen);
+  if(impactOpen && !impactAnimated){ animateImpact(); impactAnimated=true; }
+}
+function animateImpact(){
+  animNum('impWomen',0,500,1800);
+  animNum('impPieces',0,3840,2200);
+}
+function animNum(id,from,to,dur){
+  var start=null, el=document.getElementById(id);
+  if(!el)return;
+  function step(ts){
+    if(!start)start=ts;
+    var prog=Math.min((ts-start)/dur,1);
+    var ease=1-Math.pow(1-prog,3);
+    el.textContent=Math.round(from+(to-from)*ease).toLocaleString()+'+';
+    if(prog<1)requestAnimationFrame(step);
+    else el.textContent=to.toLocaleString()+'+';
+  }
+  requestAnimationFrame(step);
+}
+window.addEventListener('scroll',function(){
+  var fl=document.getElementById('impactFloat');
+  if(!fl)return;
+  if(window.scrollY>400 && !impactVisible){
+    fl.classList.add('visible');
+    impactVisible=true;
+  } else if(window.scrollY<=400 && impactVisible){
+    fl.classList.remove('visible');
+    impactVisible=false;
+  }
+});
+
+renderProducts(PRODUCTS);return;}
   const l=q.toLowerCase();
   renderProducts(PRODUCTS.filter(p=>p.name.toLowerCase().includes(l)||p.id.toLowerCase().includes(l)||p.desc.toLowerCase().includes(l)));
 }
@@ -814,7 +1189,7 @@ function openProduct(id){
       <button class="btn-cart" id="cartBtn_${p.id}" onclick="cartC++;document.getElementById('cartCount').textContent=cartC;this.textContent='✓ Added to Cart';setTimeout(()=>this.innerHTML='<svg width=\\'16\\' height=\\'16\\' viewBox=\\'0 0 20 20\\' fill=\\'none\\' style=\\'margin-right:8px;vertical-align:-2px\\'><path d=\\'M1 1H3.5L5.5 12H15.5L17.5 5H5\\' stroke=\\'white\\' stroke-width=\\'1.5\\'/><circle cx=\\'8\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/><circle cx=\\'14\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/></svg>Add to Cart',2000)">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>Add to Cart
       </button>
-      <button class="btn-buy" onclick="window.open('https://wa.me/923371856840?text=Hi!+I+want+to+order+${encodeURIComponent(p.name)}+(${p.id})+PKR+${p.price.toLocaleString()}','_blank')">Shop Now — Order via WhatsApp</button>
+      <button class="btn-buy" onclick="window.open('https://wa.me/923371856840?text=Hi!+I+want+to+order+${encodeURIComponent(p.name)}+(${p.id})+PKR+${p.price.toLocaleString()}','_blank')">BUY NOW — Only a Few Left! 🔥</button>
       <div class="share-row">
         <span>Share:</span>
         <button onclick="try{navigator.share({title:'${p.name}',url:window.location.href})}catch(e){navigator.clipboard&&navigator.clipboard.writeText(window.location.href);alert('Link copied!')}">Share Look</button>
@@ -824,11 +1199,13 @@ function openProduct(id){
       <div class="acc-item"><button class="acc-hdr" onclick="this.nextElementSibling.classList.toggle('open')">Description <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><div class="acc-body open"><p>${p.desc}</p></div></div>
       <div class="acc-item"><button class="acc-hdr" onclick="this.nextElementSibling.classList.toggle('open')">Additional Information <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><div class="acc-body"><p>${p.details}</p></div></div>
       <div class="acc-item"><button class="acc-hdr" onclick="this.nextElementSibling.classList.toggle('open')">Wash Care <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><div class="acc-body"><p>${p.wash}</p></div></div>
-      <div class="acc-item"><button class="acc-hdr" onclick="this.nextElementSibling.classList.toggle('open')">Estimated Delivery Time <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><div class="acc-body"><p><strong>${p.delivery}</strong> — Shipped nationwide across Pakistan. Cash on Delivery available.<br><br><span style="color:#8A7060;font-size:12px;">Sargodha & nearby areas: 2–3 days · Major cities: 4–5 days · Remote areas: 7+ days</span></p></div></div>
+
     </div>
   `;
+  addToRecentlyViewed(id);
   document.getElementById('homePage').classList.add('hidden');
   document.getElementById('artisanPage').classList.add('hidden');
+  document.getElementById('trackPage').classList.add('hidden');
   document.getElementById('productPage').classList.remove('hidden');
   window.scrollTo(0,0);
 }
@@ -843,6 +1220,7 @@ function showHome(){
   document.getElementById('homePage').classList.remove('hidden');
   document.getElementById('productPage').classList.add('hidden');
   document.getElementById('artisanPage').classList.add('hidden');
+  var tp=document.getElementById('trackPage');if(tp)tp.classList.add('hidden');
   window.scrollTo(0,0);
 }
 function showArtisanPage(){
@@ -853,6 +1231,199 @@ function showArtisanPage(){
 }
 function toggleMenu(){document.getElementById('overlay').classList.toggle('open');}
 function closeMenu(e){if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
+
+
+// ── RECENTLY VIEWED ────────────────────────────────
+var recentlyViewed=[];
+function addToRecentlyViewed(pid){
+  recentlyViewed=recentlyViewed.filter(function(i){return i!==pid;});
+  recentlyViewed.unshift(pid);
+  if(recentlyViewed.length>6) recentlyViewed=recentlyViewed.slice(0,6);
+  renderRecentlyViewed();
+}
+function renderRecentlyViewed(){
+  if(recentlyViewed.length<2){document.getElementById('rvSection').style.display='none';return;}
+  document.getElementById('rvSection').style.display='block';
+  var scroll=document.getElementById('rvScroll');
+  scroll.innerHTML=recentlyViewed.map(function(pid){
+    var p=PRODUCTS.find(function(x){return x.id===pid;});
+    if(!p)return '';
+    return '<div class="rv-card" onclick="openProduct(''+pid+'')"><img src="'+p.imgs[0]+'" alt="'+p.name+'"><p class="rv-card-name">'+p.name+'</p><p class="rv-card-price">PKR '+p.price.toLocaleString()+'</p></div>';
+  }).join('');
+}
+
+// ── BUNDLE OFFERS ──────────────────────────────────
+var BUNDLES=[
+  {
+    title:'Garden Bloom Bundle',
+    items:['Bloom Embroidered Lawn Suit','Kiran Silk Dupatta'],
+    products:['ESL03'],
+    originalTotal: 4667+3200,
+    discount:10,
+    tag:'Most Popular'
+  },
+  {
+    title:'Festive Elegance Set',
+    items:['Burgundy Tiered Maxi with Potli','Farida Printed Dupatta'],
+    products:['LC031'],
+    originalTotal: 5854+2800,
+    discount:10,
+    tag:'Festive Pick'
+  }
+];
+function renderBundles(){
+  var cont=document.getElementById('bundleCards');
+  if(!cont)return;
+  cont.innerHTML=BUNDLES.map(function(b,i){
+    var discPrice=Math.round(b.originalTotal*(1-b.discount/100));
+    var p=PRODUCTS.find(function(x){return x.id===b.products[0];});
+    var imgSrc=p?p.imgs[0]:'';
+    return '<div class="bundle-card" onclick="bundleWhatsApp('+i+')">'
+      +(b.tag?'<div class="bundle-badge">'+b.tag+'</div>':'')
+      +'<div class="bundle-card-imgs"><img src="'+imgSrc+'" alt="'+b.title+'"></div>'
+      +'<div class="bundle-card-info">'
+      +'<p class="bundle-card-title">'+b.title+'</p>'
+      +'<p class="bundle-card-items">'+b.items.join('<br>')+'</p>'
+      +'<div class="bundle-price-row">'
+      +'<span class="bundle-now">PKR '+discPrice.toLocaleString()+'</span>'
+      +'<span class="bundle-was">PKR '+b.originalTotal.toLocaleString()+'</span>'
+      +'<span class="bundle-save-tag">'+b.discount+'% OFF</span>'
+      +'</div>'
+      +'<button class="bundle-btn">Order Bundle via WhatsApp</button>'
+      +'</div></div>';
+  }).join('');
+}
+function bundleWhatsApp(i){
+  var b=BUNDLES[i];
+  var discPrice=Math.round(b.originalTotal*(1-b.discount/100));
+  var msg='Hi! I want to order the '+b.title+' bundle:\n'+b.items.join('\n')+'\nBundle Price: PKR '+discPrice.toLocaleString()+' ('+b.discount+'% off)';
+  window.open('https://wa.me/923371856840?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── WHATSAPP PRE-FILLED ORDER ──────────────────────
+function shopNowWhatsApp(pid,size,color){
+  var p=PRODUCTS.find(function(x){return x.id===pid;});
+  if(!p)return;
+  var sz=size||p.sizes[0];
+  var msg='Hi! I want to order:\n\n'
+    +'Product: '+p.name+'\n'
+    +'ID: #'+p.id+'\n'
+    +'Size: '+sz+'\n'
+    +'Color: '+(color||'As shown')+'\n'
+    +'Price: PKR '+p.price.toLocaleString()
+    +(p.was?'\nOriginal: PKR '+p.was.toLocaleString()+' ('+Math.round((1-p.price/p.was)*100)+'% off)':'')
+    +'\n\nPlease confirm my order. Thank you!';
+  window.open('https://wa.me/923371856840?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── ORDER TRACKING ─────────────────────────────────
+var DEMO_ORDERS={
+  'WR-2024-001':{name:'Bloom Embroidered Lawn Suit 3 Piece',status:2},
+  'WR-2024-002':{name:'Burgundy Tiered Maxi with Potli',status:3},
+  'WR-2024-003':{name:'Mustard Yellow Co-ord Set',status:1},
+  '03371856840':{name:'Your Recent Order',status:2},
+};
+var TRACK_STEPS=[
+  {label:'Order Confirmed',desc:'Your order has been received'},
+  {label:'Being Prepared',desc:'Our artisans are carefully packing your order'},
+  {label:'Shipped',desc:'Your order is on its way'},
+  {label:'Out for Delivery',desc:'Arriving today!'},
+  {label:'Delivered',desc:'Enjoy your WARA piece!'}
+];
+function showTrackPage(){
+  document.getElementById('homePage').classList.add('hidden');
+  document.getElementById('productPage').classList.add('hidden');
+  document.getElementById('artisanPage').classList.add('hidden');
+  document.getElementById('trackPage').classList.remove('hidden');
+  document.getElementById('trackResult').classList.remove('show');
+  document.getElementById('trackNotFound').classList.remove('show');
+  window.scrollTo(0,0);
+}
+function trackOrder(){
+  var val=document.getElementById('trackInput').value.trim();
+  if(!val)return;
+  var result=document.getElementById('trackResult');
+  var notFound=document.getElementById('trackNotFound');
+  result.classList.remove('show');
+  notFound.classList.remove('show');
+  var order=DEMO_ORDERS[val]||DEMO_ORDERS[val.toUpperCase()];
+  if(!order){notFound.classList.add('show');return;}
+  document.getElementById('trOrderId').textContent='ORDER #'+val.toUpperCase();
+  document.getElementById('trOrderName').textContent=order.name;
+  var stepsHtml=TRACK_STEPS.map(function(s,i){
+    var cls=i<order.status?'done':i===order.status?'active':'pending';
+    var icon=i<order.status?'<svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>':'';
+    return '<div class="track-step"><div class="track-dot '+cls+'">'+icon+'</div><div><p class="track-step-title'+(cls==='pending'?' pending':'')+'">'+s.label+'</p><p class="track-step-date">'+s.desc+'</p></div></div>';
+  }).join('');
+  document.getElementById('trSteps').innerHTML=stepsHtml;
+  result.classList.add('show');
+}
+
+// Init bundles on load
+window.addEventListener('DOMContentLoaded',function(){renderBundles();});
+
+
+// ── COUNTDOWN TIMER ────────────────────────────────
+(function(){
+  var dropDate = new Date();
+  dropDate.setDate(dropDate.getDate() + 12);
+  dropDate.setHours(dropDate.getHours() + 6, 30, 0, 0);
+  function pad(n){return n<10?'0'+n:String(n);}
+  function tick(){
+    var now=new Date(), diff=dropDate-now;
+    if(diff<=0){
+      ['dropDays','dropHrs','dropMin','dropSec'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent='00';});
+      return;
+    }
+    var d=Math.floor(diff/86400000), h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+    var el;
+    if((el=document.getElementById('dropDays')))el.textContent=pad(d);
+    if((el=document.getElementById('dropHrs')))el.textContent=pad(h);
+    if((el=document.getElementById('dropMin')))el.textContent=pad(m);
+    if((el=document.getElementById('dropSec')))el.textContent=pad(s);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// ── FLOATING IMPACT COUNTER ────────────────────────
+var impactVisible=false, impactOpen=false, impactAnimated=false;
+function toggleImpact(){
+  impactOpen=!impactOpen;
+  var panel=document.getElementById('impactPanel');
+  var fl=document.getElementById('impactFloat');
+  if(panel) panel.style.display=impactOpen?'block':'none';
+  if(fl) fl.classList.toggle('open',impactOpen);
+  if(impactOpen && !impactAnimated){ animateImpact(); impactAnimated=true; }
+}
+function animateImpact(){
+  animNum('impWomen',0,500,1800);
+  animNum('impPieces',0,3840,2200);
+}
+function animNum(id,from,to,dur){
+  var start=null, el=document.getElementById(id);
+  if(!el)return;
+  function step(ts){
+    if(!start)start=ts;
+    var prog=Math.min((ts-start)/dur,1);
+    var ease=1-Math.pow(1-prog,3);
+    el.textContent=Math.round(from+(to-from)*ease).toLocaleString()+'+';
+    if(prog<1)requestAnimationFrame(step);
+    else el.textContent=to.toLocaleString()+'+';
+  }
+  requestAnimationFrame(step);
+}
+window.addEventListener('scroll',function(){
+  var fl=document.getElementById('impactFloat');
+  if(!fl)return;
+  if(window.scrollY>400 && !impactVisible){
+    fl.classList.add('visible');
+    impactVisible=true;
+  } else if(window.scrollY<=400 && impactVisible){
+    fl.classList.remove('visible');
+    impactVisible=false;
+  }
+});
 
 renderProducts(PRODUCTS);
 </script>
