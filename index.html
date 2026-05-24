@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WARA – Empowering Women</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#FAF7F2;--warm-white:#FFFDF9;
+  --maroon:#6B1F1F;--maroon-l:#8B2E2E;
+  --gold:#C9A84C;--gold-l:#E8D090;
+  --dark:#1A1410;--text:#3D2B1F;--muted:#8A7060;--border:#E8DDD0;
+  --f-display:'Playfair Display',Georgia,serif;
+  --f-body:'DM Sans',system-ui,sans-serif;
+}
+body{font-family:var(--f-body);background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--warm-white);border-bottom:1px solid var(--border);}
+.header-top-stripe{height:5px;background:linear-gradient(90deg,#6B1F1F,#C9A84C,#6B1F1F);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;max-width:1440px;margin:0 auto;}
+.header-left,.header-right{display:flex;align-items:center;gap:6px;flex:1;}
+.header-right{justify-content:flex-end;}
+.logo{font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:3px;color:var(--dark);text-decoration:none;text-align:center;line-height:1;}
+.logo span{font-size:9px;display:block;letter-spacing:3px;font-family:var(--f-body);font-weight:300;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.icon-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:7px;border-radius:50%;transition:background .2s;color:var(--dark);position:relative;font-size:20px;}
+.icon-btn:hover{background:var(--border);}
+.badge{position:absolute;top:1px;right:1px;background:var(--maroon);color:white;font-size:8px;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;}
+.hpill{padding:10px 14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;font-family:var(--f-body);}
+.hpill:hover,.hpill.active{color:var(--maroon);border-bottom-color:var(--maroon);}
+
+/* ── TRUST MARQUEE ── */
+.trust-bar{background:var(--maroon);color:white;padding:8px 0;overflow:hidden;white-space:nowrap;}
+.marquee-wrap{display:flex;width:max-content;animation:scroll-x 38s linear infinite;}
+.marquee-wrap:hover{animation-play-state:paused;}
+.marquee-block{display:flex;align-items:center;gap:48px;padding-right:48px;}
+.marquee-block span{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;}
+.marquee-block span::before{content:'◆';margin-right:18px;color:var(--gold);font-size:7px;}
+@keyframes scroll-x{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ── NAV STRIP ── */
+.nav-strip{background:white;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:83px;z-index:900;}
+.nav-strip::-webkit-scrollbar{display:none;}
+
+/* ── MAIN ── */
+main{padding-top:83px;}
+
+/* ── HERO ── */
+.hero{position:relative;height:75vh;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:#2C1810;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;}
+.hero-content{position:relative;text-align:center;padding:40px 24px;color:white;max-width:760px;}
+.hero-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.hero-title{font-family:var(--f-display);font-size:clamp(30px,5vw,62px);font-weight:400;line-height:1.18;color:white;margin-bottom:18px;}
+.hero-title em{font-style:italic;color:#E8C97A;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.65);letter-spacing:1.5px;margin-bottom:36px;}
+.btn-gold{background:var(--gold);color:#1A0F08;border:none;padding:15px 40px;font-family:var(--f-body);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background .3s;font-weight:500;text-decoration:none;display:inline-block;}
+.btn-gold:hover{background:var(--gold-l);}
+
+/* ── SEARCH ── */
+.search-wrap-outer{background:white;padding:22px 24px;display:flex;justify-content:center;border-bottom:1px solid var(--border);}
+.search-box{display:flex;align-items:center;border:1.5px solid var(--border);width:100%;max-width:640px;background:white;transition:border-color .2s;}
+.search-box:focus-within{border-color:var(--maroon);}
+.search-box input{flex:1;border:none;padding:13px 18px;font-family:var(--f-body);font-size:14px;color:var(--text);background:transparent;outline:none;}
+.search-box input::placeholder{color:var(--muted);}
+.search-box button{background:var(--maroon);color:white;border:none;padding:13px 20px;cursor:pointer;display:flex;align-items:center;transition:background .2s;}
+.search-box button:hover{background:var(--maroon-l);}
+
+/* ── SECTION ── */
+.section{padding:56px 28px;max-width:1440px;margin:0 auto;}
+.section-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;}
+.section-title{font-family:var(--f-display);font-size:34px;font-weight:400;color:var(--dark);}
+.view-all{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--maroon);text-decoration:none;border-bottom:1px solid var(--maroon);padding-bottom:2px;transition:opacity .2s;}
+.view-all:hover{opacity:.65;}
+
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.product-card{cursor:pointer;background:white;transition:transform .3s;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.product-card:hover{transform:translateY(-5px);}
+.product-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#F0E8E0;}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .45s;}
+.product-card:hover .product-img-wrap img{transform:scale(1.06);}
+.prod-actions{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:8px;opacity:0;transition:opacity .3s;}
+.product-card:hover .prod-actions{opacity:1;}
+.prod-act-btn{width:36px;height:36px;border-radius:50%;background:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--dark);transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.prod-act-btn:hover{background:var(--maroon);color:white;}
+.prod-badge{position:absolute;top:12px;left:12px;background:var(--maroon);color:white;font-size:9px;padding:4px 10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+.prod-badge.sale{background:#8B4513;}
+.prod-badge.best{background:#2F4F4F;}
+.product-info{padding:13px;}
+.product-id{font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px;}
+.product-name{font-family:var(--f-display);font-size:15px;color:var(--dark);margin-bottom:8px;font-weight:400;}
+.product-price{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.price-now{font-size:15px;font-weight:500;color:var(--maroon);}
+.price-was{font-size:12px;color:var(--muted);text-decoration:line-through;}
+.price-save{font-size:10px;color:#2D7A2D;font-weight:600;background:#EAF3DE;padding:2px 7px;}
+
+/* ── TESTIMONIALS ── */
+.testi-section{background:var(--dark);padding:52px 0;overflow:hidden;}
+.testi-eyebrow{text-align:center;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:36px;}
+.testi-track-wrap{overflow:hidden;}
+.testi-track{display:flex;width:max-content;animation:scroll-x 48s linear infinite;gap:64px;}
+.testi-track:hover{animation-play-state:paused;}
+.testi-item{min-width:300px;padding-left:20px;border-left:2px solid var(--gold);}
+.testi-quote{font-family:var(--f-display);font-style:italic;font-size:17px;color:rgba(255,255,255,.9);line-height:1.55;margin-bottom:10px;}
+.testi-name{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.75);padding:64px 28px 24px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1440px;margin:0 auto;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-brand-logo{font-family:var(--f-display);font-size:30px;font-weight:700;color:white;letter-spacing:3px;margin-bottom:3px;}
+.footer-brand-tag{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+.footer-desc{font-size:13px;line-height:1.85;margin-bottom:24px;color:rgba(255,255,255,.55);max-width:300px;}
+.power-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.power-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+.power-stat{border-left:2px solid var(--gold);padding-left:12px;}
+.power-num{font-family:var(--f-display);font-size:26px;color:white;font-weight:400;}
+.power-lbl{font-size:11px;color:rgba(255,255,255,.45);line-height:1.45;margin-top:3px;}
+.artisan-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px;}
+.artisan-photos{display:flex;gap:8px;flex-wrap:wrap;}
+.artisan-slot{width:68px;height:68px;border-radius:4px;background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.18);overflow:hidden;cursor:pointer;transition:border-color .2s;display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.3);text-align:center;line-height:1.4;}
+.artisan-slot:hover{border-color:var(--gold);}
+.artisan-slot img{width:100%;height:100%;object-fit:cover;}
+.footer-col h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:11px;}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:white;}
+.footer-contact-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:10px;line-height:1.6;}
+.social-row{display:flex;gap:10px;margin-top:18px;}
+.soc-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);text-decoration:none;transition:all .2s;}
+.soc-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.footer-bottom{text-align:center;padding-top:20px;font-size:11px;color:rgba(255,255,255,.25);max-width:1440px;margin:0 auto;}
+
+/* ── WHATSAPP ── */
+.wa-btn{position:fixed;bottom:28px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:999;transition:transform .3s;animation:wa-pulse 2.5s infinite;}
+.wa-btn:hover{transform:scale(1.12);}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.4);}50%{box-shadow:0 4px 32px rgba(37,211,102,.7);}}
+
+/* ── MENU ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.drawer{position:absolute;top:0;left:0;width:290px;height:100%;background:var(--warm-white);transform:translateX(-100%);transition:transform .3s;padding:20px 24px;overflow-y:auto;}
+.overlay.open .drawer{transform:translateX(0);}
+.drawer-logo{font-family:var(--f-display);font-size:22px;font-weight:700;letter-spacing:2px;color:var(--dark);margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.drawer-logo span{font-size:9px;display:block;letter-spacing:3px;font-family:var(--f-body);font-weight:300;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.drawer-nav{list-style:none;}
+.drawer-nav li{border-bottom:1px solid var(--border);}
+.drawer-nav li a{display:block;padding:15px 0;font-size:14px;color:var(--dark);text-decoration:none;letter-spacing:.5px;transition:color .2s;}
+.drawer-nav li a:hover{color:var(--maroon);}
+
+/* ── PRODUCT DETAIL ── */
+.page{display:block;}
+.page.hidden{display:none;}
+.back-bar{background:var(--warm-white);border-bottom:1px solid var(--border);position:sticky;top:83px;z-index:900;}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--f-body);padding:13px 28px;transition:color .2s;letter-spacing:.5px;}
+.back-btn:hover{color:var(--maroon);}
+.product-detail{max-width:1440px;margin:0 auto;padding:44px 28px;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start;}
+.gallery-main{aspect-ratio:3/4;background:#F0E8E0;overflow:hidden;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.gallery-main img:hover{transform:scale(1.03);}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px;}
+.g-thumb{aspect-ratio:3/4;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s;background:#F0E8E0;}
+.g-thumb.active{border-color:var(--maroon);}
+.g-thumb img{width:100%;height:100%;object-fit:cover;}
+.detail-info{position:sticky;top:130px;}
+.d-id{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.d-name{font-family:var(--f-display);font-size:34px;font-weight:400;color:var(--dark);margin-bottom:16px;line-height:1.18;}
+.d-price-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+.d-price-now{font-size:28px;font-weight:500;color:var(--maroon);}
+.d-price-was{font-size:18px;color:var(--muted);text-decoration:line-through;}
+.d-price-save{font-size:12px;background:#EAF3DE;color:#2D7A2D;padding:4px 10px;font-weight:600;}
+.divider{height:1px;background:var(--border);margin:20px 0;}
+.opt-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.color-opts{display:flex;gap:9px;margin-bottom:18px;}
+.clr-swatch{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer;outline:2px solid transparent;outline-offset:3px;transition:outline-color .2s;}
+.clr-swatch.active{outline-color:var(--maroon);}
+.size-opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.sz-btn{padding:9px 18px;border:1px solid var(--border);background:white;font-family:var(--f-body);font-size:13px;cursor:pointer;transition:all .2s;color:var(--text);}
+.sz-btn:hover,.sz-btn.active{background:var(--dark);color:white;border-color:var(--dark);}
+.size-chart-link{font-size:11px;color:var(--maroon);text-decoration:underline;cursor:pointer;display:block;margin-bottom:20px;letter-spacing:.5px;}
+.delivery-badge{background:#FFF8EE;border:1px solid #F5D99A;padding:13px 16px;display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.delivery-badge-txt{font-size:13px;color:#7A5500;font-weight:500;}
+.delivery-badge-sub{font-size:11px;color:#9A7500;margin-top:3px;}
+.btn-cart{width:100%;padding:16px;background:var(--dark);color:white;border:none;font-family:var(--f-body);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-bottom:11px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:10px;}
+.btn-cart:hover{background:var(--maroon);}
+.btn-buy{width:100%;padding:16px;background:var(--maroon);color:white;border:none;font-family:var(--f-body);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-bottom:16px;font-weight:700;}
+.btn-buy:hover{background:var(--maroon-l);}
+.share-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:12px;color:var(--muted);}
+.share-row button{background:none;border:1px solid var(--border);padding:7px 18px;font-size:11px;cursor:pointer;color:var(--text);transition:all .2s;font-family:var(--f-body);letter-spacing:1px;}
+.share-row button:hover{background:var(--border);}
+.acc-item{border-bottom:1px solid var(--border);}
+.acc-hdr{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:15px 0;font-family:var(--f-body);font-size:11px;font-weight:500;color:var(--dark);cursor:pointer;text-align:left;letter-spacing:2px;text-transform:uppercase;}
+.acc-body{font-size:14px;color:var(--muted);line-height:1.85;padding-bottom:16px;display:none;}
+.acc-body.open{display:block;}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .product-detail{grid-template-columns:1fr;gap:36px;}
+  .detail-info{position:static;}
+  .hpill.hide-m{display:none;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .header-inner{padding:12px 16px;}
+  .section{padding:40px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-top-stripe"></div>
+  <div class="header-inner">
+    <div class="header-left">
+      <button class="icon-btn" onclick="toggleMenu()" aria-label="Menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><rect width="22" height="2" rx="1" fill="currentColor"/><rect y="7" width="15" height="2" rx="1" fill="currentColor"/><rect y="14" width="22" height="2" rx="1" fill="currentColor"/></svg>
+      </button>
+      <button class="hpill hide-m" onclick="filterCat(this,'coord')">Co-ord Sets</button>
+      <button class="hpill hide-m" onclick="filterCat(this,'bottoms')">Bottoms</button>
+      <button class="hpill hide-m" onclick="filterCat(this,'dupatta')">Dupatta</button>
+    </div>
+
+    <a href="#" class="logo" onclick="showHome();return false;">WARA<span>Empowering Women</span></a>
+
+    <div class="header-right">
+      <button class="hpill hide-m" onclick="alert('Our Journey – Coming Soon')">Our Journey</button>
+      <button class="hpill hide-m" onclick="alert('Artisan Stories – Coming Soon')">Artisan Stories</button>
+      <button class="icon-btn" aria-label="Search" onclick="document.getElementById('srch').focus()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.5"/><line x1="13" y1="13" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Wishlist" id="wishBtn">
+        <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 16.5C10 16.5 1.5 11 1.5 5.5C1.5 3.01 3.51 1 6 1C7.74 1 9.26 2 10 3.5C10.74 2 12.26 1 14 1C16.49 1 18.5 3.01 18.5 5.5C18.5 11 10 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="badge" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn" aria-label="Cart" id="cartBtn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="14" cy="16" r="1.5" fill="currentColor"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="marquee-wrap">
+      <div class="marquee-block">
+        <span>Cash On Delivery Available</span>
+        <span>Made by Women of Marginalized Areas of Pakistan</span>
+        <span>30% More Wages Than Market Rate</span>
+        <span>Empowering Women Who Cannot Leave Home</span>
+        <span>Heritage Craft Kept Alive</span>
+        <span>Artisans Trained from Marginalized Communities</span>
+      </div>
+      <div class="marquee-block" aria-hidden="true">
+        <span>Cash On Delivery Available</span>
+        <span>Made by Women of Marginalized Areas of Pakistan</span>
+        <span>30% More Wages Than Market Rate</span>
+        <span>Empowering Women Who Cannot Leave Home</span>
+        <span>Heritage Craft Kept Alive</span>
+        <span>Artisans Trained from Marginalized Communities</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ MENU DRAWER ═══════════════ -->
+<div class="overlay" id="overlay" onclick="closeMenu(event)">
+  <div class="drawer">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div class="drawer-logo">WARA<span>Empowering Women</span></div>
+      <button class="icon-btn" onclick="toggleMenu()" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="drawer-nav">
+      <li><a href="#" onclick="filterCat(null,'all');toggleMenu();return false;">New In</a></li>
+      <li><a href="#" onclick="filterCat(null,'coord');toggleMenu();return false;">Co-ord Sets</a></li>
+      <li><a href="#" onclick="filterCat(null,'bottoms');toggleMenu();return false;">Bottoms</a></li>
+      <li><a href="#" onclick="filterCat(null,'dupatta');toggleMenu();return false;">Dupatta</a></li>
+      <li><a href="#" onclick="toggleMenu();alert('Our Journey – Coming Soon');return false;">Our Journey</a></li>
+      <li><a href="#" onclick="toggleMenu();alert('Artisan Stories – Coming Soon');return false;">Artisan Stories</a></li>
+      <li><a href="#" onclick="toggleMenu();alert('Customer Care: +92 337 1856840');return false;">Customer Care</a></li>
+    </ul>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Contact Us</div>
+      <div style="font-size:12px;color:var(--muted);line-height:2;">
+        📍 83SB, Lahore Road, Sargodha<br>
+        📞 +92 337 1856840<br>
+        ✉️ wara.official.team@gmail.com
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div id="homePage" class="page">
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1400&q=80" alt="WARA Collection">
+  <div class="hero-content">
+    <p class="hero-eyebrow">New Season · Handcrafted in Pakistan</p>
+    <h1 class="hero-title">Your Shopping is an<br><em>Investment in Her Future</em></h1>
+    <p class="hero-sub">Each piece crafted by the extraordinary women of marginalized Pakistan</p>
+    <a href="#newIn" class="btn-gold">Discover the Collection</a>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-wrap-outer">
+  <div class="search-box">
+    <input type="text" id="srch" placeholder="Search kurta, dupatta, co-ord sets, embroidery…" oninput="searchProducts(this.value)">
+    <button aria-label="Search">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="white" stroke-width="1.5"/><line x1="13" y1="13" x2="18" y2="18" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="nav-strip">
+  <button class="hpill active" onclick="filterCat(this,'all')">All</button>
+  <button class="hpill" onclick="filterCat(this,'coord')">Co-ord Sets</button>
+  <button class="hpill" onclick="filterCat(this,'bottoms')">Bottoms</button>
+  <button class="hpill" onclick="filterCat(this,'dupatta')">Dupatta</button>
+  <button class="hpill" onclick="filterCat(this,'embroidery')">Embroidery</button>
+  <button class="hpill" onclick="filterCat(this,'lawn')">Lawn</button>
+  <button class="hpill" onclick="filterCat(this,'festive')">Festive</button>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" id="newIn">
+  <div class="section-hdr">
+    <h2 class="section-title" id="sectionTitle">New In</h2>
+    <a href="#" class="view-all">View All</a>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+  <p id="noResults" style="display:none;text-align:center;padding:40px;color:var(--muted);font-family:var(--f-display);font-style:italic;font-size:18px;">No products found. Try a different search.</p>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <p class="testi-eyebrow">Artisan Voices</p>
+  <div class="testi-track-wrap">
+    <div class="testi-track">
+      <div class="testi-item"><p class="testi-quote">"Mein in peson se apne bachon ko parhaon gi"</p><p class="testi-name">— Aasia, Artisan from Sargodha</p></div>
+      <div class="testi-item"><p class="testi-quote">"Mein apne abu ka ilaj karwa rhi hoon"</p><p class="testi-name">— Tahira, Master Embroiderer</p></div>
+      <div class="testi-item"><p class="testi-quote">"WARA ne mujhe ghar se kaam karne ka moka diya"</p><p class="testi-name">— Nadia, Craft Artisan</p></div>
+      <div class="testi-item"><p class="testi-quote">"Ab mein apnay khandan ki madad kar sakti hoon"</p><p class="testi-name">— Rubina, Embroidery Specialist</p></div>
+      <div class="testi-item"><p class="testi-quote">"Mein in peson se apne bachon ko parhaon gi"</p><p class="testi-name">— Aasia, Artisan from Sargodha</p></div>
+      <div class="testi-item"><p class="testi-quote">"Mein apne abu ka ilaj karwa rhi hoon"</p><p class="testi-name">— Tahira, Master Embroiderer</p></div>
+      <div class="testi-item"><p class="testi-quote">"WARA ne mujhe ghar se kaam karne ka moka diya"</p><p class="testi-name">— Nadia, Craft Artisan</p></div>
+      <div class="testi-item"><p class="testi-quote">"Ab mein apnay khandan ki madad kar sakti hoon"</p><p class="testi-name">— Rubina, Embroidery Specialist</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <!-- Brand -->
+    <div>
+      <div class="footer-brand-logo">WARA</div>
+      <div class="footer-brand-tag">Empowering Women</div>
+      <p class="footer-desc">Every purchase you make empowers a woman from Pakistan's most underserved communities. Wear art. Wear purpose. Create change.</p>
+
+      <p class="power-eyebrow">Power of Your Purchase</p>
+      <div class="power-grid">
+        <div class="power-stat"><div class="power-num">500+</div><div class="power-lbl">Artisans trained from marginalized communities</div></div>
+        <div class="power-stat"><div class="power-num">30%</div><div class="power-lbl">More wages than market rate</div></div>
+        <div class="power-stat"><div class="power-num">100%</div><div class="power-lbl">Empower women who cannot leave home</div></div>
+        <div class="power-stat"><div class="power-num">∞</div><div class="power-lbl">Heritage craft kept alive</div></div>
+      </div>
+
+      <p class="artisan-lbl">Meet Our Artisans</p>
+      <div class="artisan-photos">
+        <div class="artisan-slot"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=100&q=80" alt="Artisan"></div>
+        <div class="artisan-slot"><img src="https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=100&q=80" alt="Artisan"></div>
+        <div class="artisan-slot" style="flex-direction:column;gap:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Add Photo
+        </div>
+        <div class="artisan-slot" style="flex-direction:column;gap:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Add Photo
+        </div>
+        <div class="artisan-slot" style="flex-direction:column;gap:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Add Photo
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop -->
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">New In</a></li>
+        <li><a href="#">Co-ord Sets</a></li>
+        <li><a href="#">Bottoms</a></li>
+        <li><a href="#">Dupatta</a></li>
+        <li><a href="#">Festive Wear</a></li>
+        <li><a href="#">Lawn Collection</a></li>
+        <li><a href="#">Embroidery</a></li>
+      </ul>
+    </div>
+
+    <!-- Company -->
+    <div class="footer-col">
+      <h4>Our Story</h4>
+      <ul>
+        <li><a href="#">Our Journey</a></li>
+        <li><a href="#">Artisan Stories</a></li>
+        <li><a href="#">Impact Report</a></li>
+        <li><a href="#">Press & Media</a></li>
+      </ul>
+      <h4 style="margin-top:22px;">Help</h4>
+      <ul>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Returns Policy</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Customer Care</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:3px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        83SB, Lahore Road, Sargodha, Pakistan
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:3px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.57 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +92 337 1856840
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:3px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        wara.official.team@gmail.com
+      </div>
+      <div class="social-row">
+        <a href="https://www.facebook.com/share/1GEoqpUt4M/" class="soc-btn" target="_blank" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/waraempoweringwomen" class="soc-btn" target="_blank" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@waraempoweringwomen" class="soc-btn" target="_blank" aria-label="TikTok">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+        </a>
+        <a href="https://wa.me/923371856840" class="soc-btn" target="_blank" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 WARA Empowering Women · Crafted with ❤️ in Pakistan · All Rights Reserved</div>
+</footer>
+</main>
+</div>
+
+<!-- ═══════════════ PRODUCT DETAIL PAGE ═══════════════ -->
+<div id="productPage" class="page hidden">
+  <div class="back-bar">
+    <button class="back-btn" onclick="showHome()">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Shop
+    </button>
+  </div>
+  <div class="product-detail" id="productDetailContent"></div>
+</div>
+
+<!-- STICKY WHATSAPP -->
+<a href="https://wa.me/923371856840" class="wa-btn" target="_blank" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const PRODUCTS = [
+  {id:'WR-001',name:'Gulkari Embroidered Lawn Set',cat:'coord',price:8500,was:14000,badge:'New In',badgeCls:'',
+   colors:['#8B4513','#2F4F4F','#8B2E8B','#1A1A3E'],sizes:['XS','S','M','L','XL','XXL'],
+   imgs:['https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80'],
+   desc:'A masterpiece of hand-embroidered lawn, crafted by the skilled artisans of Sargodha. Each stitch tells a story of resilience and artistry passed down through generations.',
+   details:'Fabric: Pure Lawn · Dupatta: Chiffon with embroidered border · Shirt Length: 48" · Sleeve: Full · 3-Piece Set',
+   wash:'Dry clean recommended. If hand washing, use cold water and mild detergent. Do not wring. Dry in shade.',delivery:'5–7 working days'},
+  {id:'WR-002',name:'Kiran Silk Dupatta',cat:'dupatta',price:3200,was:null,badge:null,badgeCls:'',
+   colors:['#C9A84C','#8B2E2E','#2F4F4F'],sizes:['Free Size'],
+   imgs:['https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80'],
+   desc:'Pure silk dupatta with hand-applied zari work. A timeless accessory that elevates any ensemble. Woven by our master weavers from Sargodha.',
+   details:'Fabric: Pure Silk · Dimensions: 2.5m × 1.2m · Finish: Zari border with tassels',
+   wash:'Dry clean only. Store wrapped in muslin cloth in a cool dry place.',delivery:'3–5 working days'},
+  {id:'WR-003',name:'Zara Wide-Leg Palazzo',cat:'bottoms',price:4200,was:5500,badge:'Sale',badgeCls:'sale',
+   colors:['#1A1A1A','#F5F0E8','#8B4513'],sizes:['XS','S','M','L','XL'],
+   imgs:['https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80'],
+   desc:'Elegant wide-leg silhouette in premium cotton cambric. Comfortable for all-day wear with a refined, contemporary aesthetic.',
+   details:'Fabric: Cotton Cambric · Length: 40" · Waist: Elasticated with drawstring · Pockets: Yes',
+   wash:'Machine wash cold. Tumble dry low. Iron on medium heat. Do not bleach.',delivery:'4–6 working days'},
+  {id:'WR-004',name:'Bahar Festive Co-ord Set',cat:'festive',price:11500,was:18000,badge:'Best Seller',badgeCls:'best',
+   colors:['#8B2E2E','#2F4F4F','#8B4513'],sizes:['S','M','L','XL','XXL'],
+   imgs:['https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80'],
+   desc:'A stunning three-piece ensemble featuring intricate hand-embroidery on premium chiffon. Perfect for festive occasions and celebrations.',
+   details:'Includes: Shirt · Trousers · Dupatta · Fabric: Chiffon · Embroidery: Hand-done · Origin: Sargodha',
+   wash:'Dry clean only. Do not wash with water. Handle with exceptional care.',delivery:'6–8 working days'},
+  {id:'WR-005',name:'Noor Embroidered Kurta',cat:'embroidery',price:6800,was:9200,badge:'New In',badgeCls:'',
+   colors:['#F5F0E8','#8B2E2E','#2F4F4F'],sizes:['XS','S','M','L','XL'],
+   imgs:['https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80'],
+   desc:'Delicate neckline and hem embroidery on soft cotton lawn. A wearable work of art created by our master embroiderers of Sargodha.',
+   details:'Fabric: Cotton Lawn · Length: 46" · Sleeve: 3/4 · Embroidery: Neckline, Cuffs & Hem',
+   wash:'Hand wash cold or dry clean. Iron on reverse side on low heat. Do not tumble dry.',delivery:'4–6 working days'},
+  {id:'WR-006',name:'Saher Summer Lawn',cat:'lawn',price:5500,was:null,badge:null,badgeCls:'',
+   colors:['#C9A84C','#8B4513','#2F4F4F','#8B2E2E'],sizes:['XS','S','M','L','XL','XXL'],
+   imgs:['https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80'],
+   desc:'Lightweight summer lawn perfect for warm months. Breathable fabric with a subtle digital floral print designed in-house.',
+   details:'Fabric: Pure Lawn · Print: Digital · Length: 44" · 2-piece with printed trouser',
+   wash:'Machine washable with similar colors. Hang to dry. Do not bleach or tumble dry.',delivery:'3–5 working days'},
+  {id:'WR-007',name:'Gulshan Palazzo Set',cat:'coord',price:9200,was:13500,badge:'Best Seller',badgeCls:'best',
+   colors:['#8B4513','#1A1A3E','#8B2E2E'],sizes:['S','M','L','XL'],
+   imgs:['https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80'],
+   desc:'Flowing palazzo paired with a beautifully cut kurta. Hand-block printed muslin with artisanal finishing that speaks volumes.',
+   details:'Includes: Shirt + Palazzo · Fabric: Muslin · Print: Hand-block · 2-piece',
+   wash:'Hand wash cold. Do not wring. Dry flat in shade. Iron on low heat.',delivery:'5–7 working days'},
+  {id:'WR-008',name:'Farida Printed Dupatta',cat:'dupatta',price:2800,was:null,badge:null,badgeCls:'',
+   colors:['#C9A84C','#8B2E2E','#2F4F4F','#8B4513'],sizes:['Free Size'],
+   imgs:['https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80'],
+   desc:'Hand-printed chiffon dupatta with traditional geometric motifs. A versatile piece that completes any outfit effortlessly.',
+   details:'Fabric: Chiffon · Print: Hand-block · Dimensions: 2.5m × 1m · Finish: Tasseled edges',
+   wash:'Dry clean recommended. If hand washing, use cold water only. Do not twist.',delivery:'3–5 working days'},
+  {id:'WR-009',name:'Rania Embroidered Co-ord',cat:'coord',price:13500,was:19000,badge:'New In',badgeCls:'',
+   colors:['#722F37','#1C3A4A','#4A3728'],sizes:['XS','S','M','L','XL'],
+   imgs:['https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80'],
+   desc:'Richly embroidered coord set in premium organza. Each motif meticulously hand-crafted by artisans trained in our program.',
+   details:'Fabric: Organza · Includes: Shirt · Trouser · Dupatta · Embroidery: Hand-crafted · 3-piece',
+   wash:'Dry clean only. Store in a breathable garment bag. Avoid direct sunlight.',delivery:'7–10 working days'},
+  {id:'WR-010',name:'Wafa Cotton Lawn Suit',cat:'lawn',price:4800,was:6200,badge:'Sale',badgeCls:'sale',
+   colors:['#A0C4B8','#E8D5B0','#8B2E2E'],sizes:['S','M','L','XL','XXL'],
+   imgs:['https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80'],
+   desc:'Classic 3-piece cotton lawn with embroidered neckline. An everyday essential that blends comfort with elegance.',
+   details:'Fabric: Cotton Lawn · Includes: Shirt · Trouser · Dupatta · Embroidery: Neckline only',
+   wash:'Machine wash cold or hand wash. Hang to dry. Iron on medium heat.',delivery:'4–6 working days'},
+  {id:'WR-011',name:'Saba Festive Lehenga Set',cat:'festive',price:22000,was:32000,badge:'New In',badgeCls:'',
+   colors:['#8B0000','#1A1A3E','#2F4F4F'],sizes:['XS','S','M','L'],
+   imgs:['https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80','https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80'],
+   desc:'A breathtaking bridal lehenga with full hand-embroidery on velvet. Crafted over weeks by our most experienced artisans. A piece you will treasure forever.',
+   details:'Fabric: Velvet Lehenga · Pure Silk Dupatta · Embroidery: Full hand-work · Includes: Choli · Lehenga · Dupatta',
+   wash:'Dry clean only. Store flat in a cool dry place. Handle with extreme care.',delivery:'10–14 working days'},
+  {id:'WR-012',name:'Zulekha Embroidered Bottoms',cat:'bottoms',price:3500,was:4500,badge:null,badgeCls:'',
+   colors:['#1A1A1A','#2F4F4F','#722F37'],sizes:['XS','S','M','L','XL','XXL'],
+   imgs:['https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=700&q=80','https://images.unsplash.com/photo-1583391733981-8498408ee4b6?w=700&q=80','https://images.unsplash.com/photo-1609671386659-0c6b7b0fe96b?w=700&q=80','https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80'],
+   desc:'Tailored trousers with embroidered hem and ankles. A subtle statement piece that pairs beautifully with any kurta.',
+   details:'Fabric: Cotton Cambric · Length: 38" · Waist: Elasticated · Embroidery: Hem & Ankles',
+   wash:'Hand wash cold. Iron inside out on low heat. Do not tumble dry.',delivery:'3–5 working days'},
+];
+
+let cartCount=0, wishCount=0;
+
+function renderProducts(arr){
+  const grid=document.getElementById('productGrid');
+  const noR=document.getElementById('noResults');
+  if(!arr.length){grid.innerHTML='';noR.style.display='block';return;}
+  noR.style.display='none';
+  grid.innerHTML=arr.map(p=>`
+    <div class="product-card" onclick="openProduct('${p.id}')">
+      <div class="product-img-wrap">
+        <img src="${p.imgs[0]}" alt="${p.name}" loading="lazy">
+        ${p.badge?`<div class="prod-badge ${p.badgeCls}">${p.badge}</div>`:''}
+        <div class="prod-actions">
+          <button class="prod-act-btn" onclick="addWish(event)" aria-label="Wishlist">
+            <svg width="15" height="14" viewBox="0 0 20 18" fill="none"><path d="M10 16.5C10 16.5 1.5 11 1.5 5.5C1.5 3.01 3.51 1 6 1C7.74 1 9.26 2 10 3.5C10.74 2 12.26 1 14 1C16.49 1 18.5 3.01 18.5 5.5C18.5 11 10 16.5 10 16.5Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button class="prod-act-btn" onclick="addCart(event)" aria-label="Add to cart">
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="14" cy="16" r="1.5" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="product-id">#${p.id}</p>
+        <h3 class="product-name">${p.name}</h3>
+        <div class="product-price">
+          <span class="price-now">PKR ${p.price.toLocaleString()}</span>
+          ${p.was?`<span class="price-was">PKR ${p.was.toLocaleString()}</span><span class="price-save">Save ${Math.round((1-p.price/p.was)*100)}%</span>`:''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(btn,cat){
+  document.querySelectorAll('.nav-strip .hpill,.header-inner .hpill').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const catNames={all:'New In',coord:'Co-ord Sets',bottoms:'Bottoms',dupatta:'Dupatta',embroidery:'Embroidery',lawn:'Lawn',festive:'Festive Wear'};
+  document.getElementById('sectionTitle').textContent=catNames[cat]||'New In';
+  renderProducts(cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===cat));
+  showHome();
+}
+
+function searchProducts(q){
+  if(!q.trim()){renderProducts(PRODUCTS);return;}
+  const low=q.toLowerCase();
+  renderProducts(PRODUCTS.filter(p=>p.name.toLowerCase().includes(low)||p.id.toLowerCase().includes(low)||p.cat.toLowerCase().includes(low)||p.desc.toLowerCase().includes(low)));
+}
+
+function addCart(e){e.stopPropagation();cartCount++;document.getElementById('cartCount').textContent=cartCount;}
+function addWish(e){e.stopPropagation();wishCount++;document.getElementById('wishCount').textContent=wishCount;}
+
+function openProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('productDetailContent').innerHTML=`
+    <div>
+      <div class="gallery-main" id="gMain"><img src="${p.imgs[0]}" alt="${p.name}" id="gMainImg"></div>
+      <div class="gallery-thumbs">
+        ${p.imgs.map((im,i)=>`<div class="g-thumb${i===0?' active':''}" id="gt${i}" onclick="setThumb(${i},'${id}')"><img src="${im}" alt="View ${i+1}"></div>`).join('')}
+      </div>
+    </div>
+    <div class="detail-info">
+      <p class="d-id">#${p.id}</p>
+      <h1 class="d-name">${p.name}</h1>
+      <div class="d-price-row">
+        <span class="d-price-now">PKR ${p.price.toLocaleString()}</span>
+        ${p.was?`<span class="d-price-was">PKR ${p.was.toLocaleString()}</span><span class="d-price-save">${Math.round((1-p.price/p.was)*100)}% OFF</span>`:''}
+      </div>
+      <div class="divider"></div>
+      <p class="opt-lbl">Select Colour</p>
+      <div class="color-opts">
+        ${p.colors.map((c,i)=>`<div class="clr-swatch${i===0?' active':''}" style="background:${c}" onclick="selClr(this)" title="${c}"></div>`).join('')}
+      </div>
+      <p class="opt-lbl">Select Size</p>
+      <div class="size-opts">
+        ${p.sizes.map((s,i)=>`<button class="sz-btn${i===0?' active':''}" onclick="selSz(this)">${s}</button>`).join('')}
+      </div>
+      <span class="size-chart-link" onclick="showSizeChart()">View Size Chart →</span>
+      <div class="delivery-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A5500" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div>
+          <div class="delivery-badge-txt">Estimated Delivery: ${p.delivery}</div>
+          <div class="delivery-badge-sub">Cash on Delivery · Available Nationwide</div>
+        </div>
+      </div>
+      <button class="btn-cart" onclick="cartCount++;document.getElementById('cartCount').textContent=cartCount;this.textContent='✓ Added to Cart';setTimeout(()=>{this.innerHTML='<svg width=\\'16\\' height=\\'16\\' viewBox=\\'0 0 20 20\\' fill=\\'none\\' style=\\'vertical-align:-2px;margin-right:8px\\'><path d=\\'M1 1H3.5L5.5 12H15.5L17.5 5H5\\' stroke=\\'white\\' stroke-width=\\'1.5\\' stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\'/><circle cx=\\'8\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/><circle cx=\\'14\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/></svg>Add to Cart'},2000)">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="vertical-align:-2px;margin-right:8px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>
+        Add to Cart
+      </button>
+      <button class="btn-buy" onclick="alert('Proceeding to checkout…')">Shop Now — Buy Immediately</button>
+      <div class="share-row">
+        <span>Share:</span>
+        <button onclick="try{navigator.share({title:'${p.name}',text:'Check this out from WARA Empowering Women!',url:window.location.href})}catch(e){navigator.clipboard&&navigator.clipboard.writeText(window.location.href);alert('Link copied!');}">Share This Look</button>
+        <button onclick="window.open('https://wa.me/?text=Check+this+out+from+WARA:+${encodeURIComponent(p.name)}','_blank')">WhatsApp</button>
+      </div>
+      <div class="divider"></div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="togAcc(this)">Description <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="acc-body open"><p>${p.desc}</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="togAcc(this)">Additional Information <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><p>${p.details}</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="togAcc(this)">Wash Care <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="acc-body"><p>${p.wash}</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="togAcc(this)">Estimated Delivery Time <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="acc-body">
+          <p><strong>${p.delivery}</strong> — We ship across all major cities in Pakistan. Cash on Delivery available nationwide.</p>
+          <p style="margin-top:8px;color:#8A7060;">Sargodha &amp; nearby: 2–3 working days · Other cities: ${p.delivery}</p>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('homePage').classList.add('hidden');
+  document.getElementById('productPage').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+window.setThumb=function(i,id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('gMainImg').src=p.imgs[i];
+  document.querySelectorAll('.g-thumb').forEach((t,j)=>t.classList.toggle('active',i===j));
+};
+function selClr(el){el.closest('.color-opts').querySelectorAll('.clr-swatch').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
+function selSz(el){el.closest('.size-opts').querySelectorAll('.sz-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+function togAcc(btn){btn.nextElementSibling.classList.toggle('open');}
+function showSizeChart(){alert('WARA Size Chart\n\nXS  → Bust 34" · Waist 28" · Hip 36"\nS    → Bust 36" · Waist 30" · Hip 38"\nM   → Bust 38" · Waist 32" · Hip 40"\nL    → Bust 40" · Waist 34" · Hip 42"\nXL  → Bust 42" · Waist 36" · Hip 44"\nXXL → Bust 44" · Waist 38" · Hip 46"\n\nFor custom sizing, WhatsApp us at +92 337 1856840');}
+
+function showHome(){
+  document.getElementById('homePage').classList.remove('hidden');
+  document.getElementById('productPage').classList.add('hidden');
+  window.scrollTo(0,0);
+}
+function toggleMenu(){document.getElementById('overlay').classList.toggle('open');}
+function closeMenu(e){if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
+
+renderProducts(PRODUCTS);
+</script>
+</body>
+</html>
