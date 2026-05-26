@@ -782,7 +782,7 @@ const PRODUCTS = [
     price:4667,
     was:6890,
     badge:'New In',badgeCls:'',
-    colors:['#6B3FA0','#3D1F6B','#8B4C8B'],
+    colors:['#6B3FA0'],
     sizes:['S','M','L'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl03-3.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl03-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl03-2.jpg'],
     desc:'Hand-embroidered lawn suit in rich purple, featuring intricate floral motifs along the neckline and full length of the shirt. Each stitch placed by the skilled artisans of Sargodha — a wearable testament to generations of craft.',
@@ -797,7 +797,7 @@ const PRODUCTS = [
     price:5854,
     was:7319,
     badge:'20% Off',badgeCls:'sale',
-    colors:['#5C1A1A','#2C1A3A'],
+    colors:['#5C1A1A'],
     sizes:['S','M','L'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc031-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc031-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc031-3.jpg'],
     desc:'A rich floral burgundy maxi dress featuring a classic shirt collar, gold lace tier detailing, and a matching hand-embellished potli bag. Effortlessly elegant — from festive gatherings to intimate celebrations.',
@@ -812,7 +812,7 @@ const PRODUCTS = [
     price:5835,
     was:7293,
     badge:'20% Off',badgeCls:'sale',
-    colors:['#C9A84C','#8B7A00'],
+    colors:['#C9A84C'],
     sizes:['M'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-1.jpg'],
     desc:'A warm, sun-kissed two-piece in rich mustard yellow featuring delicate floral embroidery along the sleeves and neckline placket in orange and olive tones. Crafted by our artisans who pour their hearts into every stitch.',
@@ -827,7 +827,7 @@ const PRODUCTS = [
     price:5597,
     was:7196,
     badge:'30% Off',badgeCls:'sale',
-    colors:['#6B7B2E','#4A5520','#8B8B00'],
+    colors:['#6B7B2E'],
     sizes:['S','M','L'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-3.jpg'],
     desc:'Olive & cream tie-dye co-ord set with a flowy kurta, side slits, gold chain neckline, and cowrie shell accents. Effortlessly chic for casual days and festive nights alike.',
@@ -842,7 +842,7 @@ const PRODUCTS = [
     price:5562,
     was:7946,
     badge:'30% Off',badgeCls:'sale',
-    colors:['#F5F0E0','#E8D8C8'],
+    colors:['#F5F0E0'],
     sizes:['S','M'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-3.jpg'],
     desc:'Elegant ivory white 3-piece suit with intricate silver gotta work embroidery, delicate floral motifs, and stunning multi-color tie-dye dupatta.',
@@ -857,7 +857,7 @@ const PRODUCTS = [
     price:4116,
     was:5879,
     badge:'30% Off',badgeCls:'sale',
-    colors:['#8B2222','#722F37'],
+    colors:['#8B2222'],
     sizes:['M','L'],
     imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-3.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-2.jpg'],
     desc:'Elegant maroon premium lawn shirt with intricate hand embroidered floral motifs, pearl button detailing and beautifully embroidered sleeves.',
@@ -939,8 +939,8 @@ function openProduct(id){
         ${p.was?`<span class="d-price-was">PKR ${p.was.toLocaleString()}</span><span class="d-price-save">${Math.round((1-p.price/p.was)*100)}% OFF</span>`:''}
       </div>
       <div class="divider"></div>
-      <p class="opt-lbl">Select Colour</p>
-      <div class="color-opts">${p.colors.map((c,i)=>`<div class="clr-swatch${i===0?' active':''}" style="background:${c}" onclick="this.closest('.color-opts').querySelectorAll('.clr-swatch').forEach(s=>s.classList.remove('active'));this.classList.add('active')"></div>`).join('')}</div>
+      ${p.colors.length>1?'<p class="opt-lbl">Select Colour</p>':''}
+      <div class="color-opts" style="${p.colors.length<=1?'display:none':''}">${p.colors.map((c,i)=>`<div class="clr-swatch${i===0?' active':''}" style="background:${c}" onclick="this.closest('.color-opts').querySelectorAll('.clr-swatch').forEach(s=>s.classList.remove('active'));this.classList.add('active')"></div>`).join('')}</div>
       <p class="opt-lbl">Select Size</p>
       <div class="size-opts">${p.sizes.map((s,i)=>`<button class="sz-btn${i===0?' active':''}" onclick="this.closest('.size-opts').querySelectorAll('.sz-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">${s}</button>`).join('')}</div>
       <span class="size-chart-link" onclick="document.getElementById('sizeModal').classList.add('open')">View Size Chart →</span>
