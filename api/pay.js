@@ -1,5 +1,4 @@
 module.exports = function(req, res) {
-  // Handle GET request (browser test)
   if (req.method === 'GET') {
     return res.status(200).send('PayFast API is working. Use POST to make payment.');
   }
@@ -9,20 +8,25 @@ module.exports = function(req, res) {
   }
 
   try {
-    var product_id = req.body.product_id || 'unknown';
+    var product_id = req.body.product_id || 'WARA';
     var product_name = req.body.product_name || 'WARA Order';
-    var amount = req.body.amount || '0';
+    var amount = parseFloat(req.body.amount) || 0;
+
+    if (amount <= 0) {
+      return res.status(400).send('Invalid amount: ' + req.body.amount);
+    }
 
     var MERCHANT_ID = process.env.PAYFAST_MERCHANT_ID || '606161';
     var SECURED_KEY = process.env.PAYFAST_SECURED_KEY || '';
     var basketId = product_id + '-' + Date.now();
     var orderDate = new Date().toISOString().slice(0, 10);
-    var txnAmt = String(Math.round(parseFloat(amount) * 100));
+    var txnAmt = String(amount);
 
     var postData = JSON.stringify({
       MERCHANT_ID: MERCHANT_ID,
       SECURED_KEY: SECURED_KEY,
       TXNAMT: txnAmt,
+      CURRENCY_CODE: 'PKR',
       BASKET_ID: basketId,
       ORDER_DATE: orderDate,
       TXNDESC: product_name,
@@ -56,6 +60,7 @@ module.exports = function(req, res) {
               + '?MERCHANT_ID=' + MERCHANT_ID
               + '&TOKEN=' + parsed.ACCESS_TOKEN
               + '&TXNAMT=' + txnAmt
+              + '&CURRENCY_CODE=PKR'
               + '&CUSTOMER_MOBILE_NO='
               + '&CUSTOMER_EMAIL_ADDRESS=wara.official.team@gmail.com'
               + '&SIGNATURE='
@@ -71,7 +76,7 @@ module.exports = function(req, res) {
             res.writeHead(302, { Location: url });
             res.end();
           } else {
-            res.status(500).send('PayFast token error: ' + data.substring(0, 200));
+            res.status(500).send('PayFast token error: ' + data.substring(0, 300));
           }
         } catch(e) {
           res.status(500).send('Parse error: ' + e.message);
