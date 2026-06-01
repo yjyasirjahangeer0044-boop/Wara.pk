@@ -1039,35 +1039,6 @@ function payOnline(pid,name,amt){
 })();
 </script>
 
-<script>
-var currentProductId = null;
-var _origOpenProduct = typeof openProduct === 'function' ? openProduct : null;
 
-// Override to track current product
-var _realOpen = null;
-document.addEventListener('DOMContentLoaded', function() {
-  // Nothing needed here, we'll use a different approach
-});
-
-function handleAddToCart(btn) {
-  // Get product ID from the page
-  var idEl = btn.closest('.detail-info').querySelector('.d-id');
-  if (!idEl) return;
-  var pid = idEl.textContent.replace('#', '').trim();
-  var szBtn = btn.closest('.detail-info').querySelector('.sz-btn.active');
-  var sz = szBtn ? szBtn.textContent : null;
-  
-  if (typeof ATC === 'function') {
-    ATC(pid, sz);
-  } else {
-    alert('Cart function not available. Please refresh the page.');
-  }
-  
-  btn.textContent = '✓ Added to Cart';
-  setTimeout(function() {
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART';
-  }, 2000);
-}
-</script>
 </body>
 </html>
