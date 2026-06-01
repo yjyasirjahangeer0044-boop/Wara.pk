@@ -56,27 +56,33 @@ module.exports = function(req, res) {
         try {
           var parsed = JSON.parse(data);
           if (parsed.ACCESS_TOKEN) {
-            var url = 'https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction'
-              + '?MERCHANT_ID=' + MERCHANT_ID
-              + '&TOKEN=' + parsed.ACCESS_TOKEN
-              + '&TXNAMT=' + txnAmt
-              + '&CURRENCY_CODE=PKR'
-              + '&CUSTOMER_MOBILE_NO='
-              + '&CUSTOMER_EMAIL_ADDRESS=wara.official.team@gmail.com'
-              + '&SIGNATURE='
-              + '&VERSION=2.0'
-              + '&TXNDESC=' + encodeURIComponent(product_name)
-              + '&PROCCODE=00'
-              + '&BASKET_ID=' + basketId
-              + '&ORDER_DATE=' + orderDate
-              + '&CHECKOUT_URL=' + encodeURIComponent('https://wara.pk')
-              + '&SUCCESS_URL=' + encodeURIComponent('https://wara.pk/?payment=success')
-              + '&FAILURE_URL=' + encodeURIComponent('https://wara.pk/?payment=failed')
-              + '&MERCHANT_NAME=' + encodeURIComponent('WARA Empowering Women');
-            res.writeHead(302, { Location: url });
-            res.end();
+            // Return auto-submit POST form instead of GET redirect
+            var html = '<!DOCTYPE html><html><head><title>Redirecting to Payment...</title></head><body>'
+              + '<p style="text-align:center;padding:60px;font-family:sans-serif;color:#666;">Redirecting to secure payment page...</p>'
+              + '<form id="pf" method="POST" action="https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction">'
+              + '<input type="hidden" name="MERCHANT_ID" value="' + MERCHANT_ID + '">'
+              + '<input type="hidden" name="TOKEN" value="' + parsed.ACCESS_TOKEN + '">'
+              + '<input type="hidden" name="TXNAMT" value="' + txnAmt + '">'
+              + '<input type="hidden" name="CURRENCY_CODE" value="PKR">'
+              + '<input type="hidden" name="CUSTOMER_MOBILE_NO" value="">'
+              + '<input type="hidden" name="CUSTOMER_EMAIL_ADDRESS" value="wara.official.team@gmail.com">'
+              + '<input type="hidden" name="SIGNATURE" value="">'
+              + '<input type="hidden" name="VERSION" value="2.0">'
+              + '<input type="hidden" name="TXNDESC" value="' + product_name.replace(/"/g, '&quot;') + '">'
+              + '<input type="hidden" name="PROCCODE" value="00">'
+              + '<input type="hidden" name="BASKET_ID" value="' + basketId + '">'
+              + '<input type="hidden" name="ORDER_DATE" value="' + orderDate + '">'
+              + '<input type="hidden" name="CHECKOUT_URL" value="https://wara.pk">'
+              + '<input type="hidden" name="SUCCESS_URL" value="https://wara.pk/?payment=success">'
+              + '<input type="hidden" name="FAILURE_URL" value="https://wara.pk/?payment=failed">'
+              + '<input type="hidden" name="MERCHANT_NAME" value="WARA Empowering Women">'
+              + '</form>'
+              + '<script>document.getElementById("pf").submit();</script>'
+              + '</body></html>';
+            res.setHeader('Content-Type', 'text/html');
+            res.status(200).send(html);
           } else {
-            res.status(500).send('PayFast token error: ' + data.substring(0, 300));
+            res.status(500).send('PayFast error: ' + data.substring(0, 300));
           }
         } catch(e) {
           res.status(500).send('Parse error: ' + e.message);
