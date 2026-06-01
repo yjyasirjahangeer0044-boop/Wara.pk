@@ -850,9 +850,7 @@ function openProduct(id){
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A5500" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         <div><div class="delivery-badge-txt">Estimated Delivery: ${p.delivery}</div><div class="delivery-badge-sub">Free Cash on Delivery · Available Nationwide</div></div>
       </div>
-      <button class="btn-cart" id="cartBtn_${p.id}" onclick="var sz=this.closest('.detail-info').querySelector('.sz-btn.active');ATC('${p.id}',sz?sz.textContent:null);this.textContent='✓ Added to Cart';setTimeout(()=>this.innerHTML='<svg width=\\'16\\' height=\\'16\\' viewBox=\\'0 0 20 20\\' fill=\\'none\\' style=\\'margin-right:8px;vertical-align:-2px\\'><path d=\\'M1 1H3.5L5.5 12H15.5L17.5 5H5\\' stroke=\\'white\\' stroke-width=\\'1.5\\'/><circle cx=\\'8\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/><circle cx=\\'14\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/></svg>Add to Cart',2000)">
-        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>Add to Cart
-      </button>
+      <button class="btn-cart" onclick="handleAddToCart(this)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART</button>
       <button class="btn-buy" onclick="window.open('https://wa.me/923371856840?text=Hi!+I+want+to+order+${encodeURIComponent(p.name)}+(${p.id})+PKR+${p.price.toLocaleString()}','_blank')">BUY NOW — Only a Few Left! 🔥</button>
       <p class="pay-or">— or —</p>
       <button class="btn-pay" onclick="payOnline('${p.id}','${p.name}',${p.price})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Pay Online — Card / Bank</button>
@@ -1004,6 +1002,37 @@ function payOnline(pid,name,amt){
     },500);
   }
 })();
+</script>
+
+<script>
+var currentProductId = null;
+var _origOpenProduct = typeof openProduct === 'function' ? openProduct : null;
+
+// Override to track current product
+var _realOpen = null;
+document.addEventListener('DOMContentLoaded', function() {
+  // Nothing needed here, we'll use a different approach
+});
+
+function handleAddToCart(btn) {
+  // Get product ID from the page
+  var idEl = btn.closest('.detail-info').querySelector('.d-id');
+  if (!idEl) return;
+  var pid = idEl.textContent.replace('#', '').trim();
+  var szBtn = btn.closest('.detail-info').querySelector('.sz-btn.active');
+  var sz = szBtn ? szBtn.textContent : null;
+  
+  if (typeof ATC === 'function') {
+    ATC(pid, sz);
+  } else {
+    alert('Cart function not available. Please refresh the page.');
+  }
+  
+  btn.textContent = '✓ Added to Cart';
+  setTimeout(function() {
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART';
+  }, 2000);
+}
 </script>
 </body>
 </html>
