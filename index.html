@@ -972,17 +972,38 @@ function RC(){
 
 <script>
 function payOnline(pid,name,amt){
-  var f=document.createElement('form');f.method='POST';
-  f.action='https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction';
-  f.target='_blank';
-  var d={'MERCHANT_ID':'606161','MERCHANT_NAME':'WARA Empowering Women','PROCCODE':'00',
-    'TXNAMT':String(Math.round(amt*100)),'CUSTOMER_EMAIL_ADDRESS':'wara.official.team@gmail.com',
-    'VERSION':'2.0','TXNDESC':name+' (#'+pid+')','SUCCESS_URL':'https://wara.pk',
-    'FAILURE_URL':'https://wara.pk','BASKET_ID':pid+'-'+Date.now(),
-    'ORDER_DATE':new Date().toISOString().slice(0,10),'CHECKOUT_URL':'https://wara.pk'};
-  for(var k in d){var i=document.createElement('input');i.type='hidden';i.name=k;i.value=d[k];f.appendChild(i);}
-  document.body.appendChild(f);f.submit();document.body.removeChild(f);
+  var btn=document.querySelector('.btn-pay');btn.textContent='Processing...';btn.disabled=true;
+  fetch('/api/pay',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({product_id:pid,product_name:name+' (#'+pid+')',amount:amt})
+  }).then(function(r){
+    if(r.redirected){window.open(r.url,'_blank');btn.textContent='Pay Online — Card / Bank';btn.disabled=false;return;}
+    return r.json();
+  }).then(function(d){
+    if(d&&d.error){alert('Payment error: '+d.error+'\nPlease try WhatsApp order or contact us.');btn.textContent='Pay Online — Card / Bank';btn.disabled=false;}
+  }).catch(function(e){
+    alert('Connection error. Please try WhatsApp order.');btn.textContent='Pay Online — Card / Bank';btn.disabled=false;
+  });
 }
+</script>
+
+<script>
+// Payment status check
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if(params.get('payment')==='success'){
+    setTimeout(function(){
+      alert('Payment Successful! ✅\n\nThank you for your order.\nYou will receive confirmation on WhatsApp shortly.');
+      history.replaceState(null,'','https://wara.pk');
+    },500);
+  } else if(params.get('payment')==='failed'){
+    setTimeout(function(){
+      alert('Payment was not completed.\n\nYou can try again or order via WhatsApp/Cash on Delivery.');
+      history.replaceState(null,'','https://wara.pk');
+    },500);
+  }
+})();
 </script>
 </body>
 </html>
