@@ -1024,20 +1024,26 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function handleAddToCart(btn) {
-  // Get product ID from the page
   var idEl = btn.closest('.detail-info').querySelector('.d-id');
-  if (!idEl) return;
+  if (!idEl) { alert('Error: product not found'); return; }
   var pid = idEl.textContent.replace('#', '').trim();
   var szBtn = btn.closest('.detail-info').querySelector('.sz-btn.active');
   var sz = szBtn ? szBtn.textContent : null;
   
-  if (typeof ATC === 'function') {
-    ATC(pid, sz);
-  } else {
-    alert('Cart function not available. Please refresh the page.');
-  }
+  // Find product in PRODUCTS array
+  var p = PRODUCTS.find(function(x){ return x.id === pid; });
+  if (!p) { alert('Product not found: ' + pid); return; }
   
-  btn.textContent = '✓ Added to Cart';
+  // Add to cart directly
+  var s = sz || p.sizes[0];
+  var ex = CI.find(function(i){ return i.id === pid && i.sz === s; });
+  if (ex) { ex.q++; } else { CI.push({id:p.id, nm:p.name, pr:p.price, im:p.imgs[0], sz:s, q:1}); }
+  cartC = CI.reduce(function(a,i){ return a + i.q; }, 0);
+  document.getElementById("cartCount").textContent = cartC;
+  RC();
+  TC();
+  
+  btn.textContent = '✓ Added!';
   setTimeout(function() {
     btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART';
   }, 2000);
