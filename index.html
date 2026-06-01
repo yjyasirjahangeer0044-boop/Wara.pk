@@ -121,22 +121,22 @@ main{padding-top:80px;}
 .story-body .story-highlight{font-family:var(--f-display);font-style:italic;font-size:17px;color:var(--maroon);border-left:3px solid var(--gold);padding-left:14px;margin:20px 0;}
 
 /* ARTISAN REELS */
-.reels-section{background:var(--cream);padding:60px 28px;}
-.reels-inner{max-width:1100px;margin:0 auto;}
-.reels-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.reels-title{font-family:var(--f-display);font-size:30px;font-weight:400;color:var(--dark);margin-bottom:32px;}
-.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.reel-card{background:white;border:1px solid var(--border);overflow:hidden;transition:transform .3s;cursor:pointer;text-decoration:none;display:block;}
-.reel-card:hover{transform:translateY(-4px);}
-.reel-thumb{aspect-ratio:9/16;background:#1A0B0B;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.reel-thumb-bg{position:absolute;inset:0;background:linear-gradient(160deg,#3D1515,#1A0B0B);opacity:.85;}
-.reel-play{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:background .2s;}
-.reel-card:hover .reel-play{background:var(--gold);}
-.reel-play svg{fill:white;}
-.reel-info{padding:14px;}
-.reel-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
-.reel-desc{font-size:13px;color:var(--dark);font-family:var(--f-display);font-weight:400;}
-.reel-ig{font-size:10px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:4px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* FOOTER */
 footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px;}
@@ -253,7 +253,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
   .product-detail{grid-template-columns:1fr;gap:32px;}
   .detail-info{position:static;}
   .story-inner{grid-template-columns:1fr;}
-  .reels-grid{grid-template-columns:repeat(2,1fr);}
+  
   .hpill.hide-m{display:none;}
 }
 @media(max-width:600px){
@@ -261,7 +261,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
   .product-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .header-inner{padding:10px 14px;}
   .section{padding:36px 14px;}
-  .reels-grid{grid-template-columns:1fr;}
+  
 }
 
 /* WAX SEAL */
@@ -327,6 +327,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
 .cf2w:hover{background:#8B2E2E;}
 .cf2c{width:100%;padding:10px;background:none;border:1px solid var(--border);color:var(--text);font-family:var(--f-body);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;}
 .cf2c:hover{background:var(--border);}
+
+.btn-pay{width:100%;padding:15px;background:#1A8C1A;color:white;border:none;font-family:var(--f-body);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;margin-bottom:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-pay:hover{background:#157015;}
+.pay-or{text-align:center;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-4px 0 10px;}
 </style>
 </head>
 <body>
@@ -369,7 +373,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
   <div class="trust-bar">
     <div class="marquee-wrap">
       <div class="marquee-block">
-        <span>Cash On Delivery Available</span>
+        <span>Free Cash On Delivery Nationwide</span>
         <span>Made by Women of Marginalized Areas of Pakistan</span>
         <span>30% More Wages Than Market Rate</span>
         <span>Empowering Women Who Cannot Leave Home</span>
@@ -377,7 +381,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
         <span>Artisans Trained from Marginalized Communities</span>
       </div>
       <div class="marquee-block" aria-hidden="true">
-        <span>Cash On Delivery Available</span>
+        <span>Free Cash On Delivery Nationwide</span>
         <span>Made by Women of Marginalized Areas of Pakistan</span>
         <span>30% More Wages Than Market Rate</span>
         <span>Empowering Women Who Cannot Leave Home</span>
@@ -562,49 +566,6 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
     </div>
   </section>
 
-  <!-- MEET OUR ARTISANS REELS -->
-  <section class="reels-section">
-    <div class="reels-inner">
-      <p class="reels-eyebrow">Behind the Craft</p>
-      <h2 class="reels-title">Meet Our Artisans</h2>
-      <div class="reels-grid">
-        <a href="https://www.instagram.com/reel/DYpbkx0D3mQ/?igsh=b2s0cmV3OHF0ZTZu" target="_blank" class="reel-card">
-          <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/artisan-story.jpg) center/cover;">
-            <div class="reel-thumb-bg" style="opacity:.4;"></div>
-            <div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div>
-          </div>
-          <div class="reel-info">
-            <p class="reel-label">Artisan Story · 01</p>
-            <p class="reel-desc">Her Hands, Her Story</p>
-            <p class="reel-ig"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @waraempoweringwomen</p>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/reel/DW4PZmyibiY/?igsh=NHFlZ2hmaGlhcnV5" target="_blank" class="reel-card">
-          <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/hero.jpg) center/cover;">
-            <div class="reel-thumb-bg" style="opacity:.4;"></div>
-            <div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div>
-          </div>
-          <div class="reel-info">
-            <p class="reel-label">Artisan Story · 02</p>
-            <p class="reel-desc">Craft Passed Through Generations</p>
-            <p class="reel-ig"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @waraempoweringwomen</p>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/reel/DXKJ9imDVJi/?igsh=MWppNGVna2Yyd3NwZg==" target="_blank" class="reel-card">
-          <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl03-3.jpg) center/cover;">
-            <div class="reel-thumb-bg" style="opacity:.4;"></div>
-            <div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div>
-          </div>
-          <div class="reel-info">
-            <p class="reel-label">Artisan Story · 03</p>
-            <p class="reel-desc">Weaving Change, Stitch by Stitch</p>
-            <p class="reel-ig"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @waraempoweringwomen</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
@@ -726,27 +687,6 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);padding:60px 28px 22px
         <p class="highlight">You are not just looking at a moment.<br>You are witnessing a future being rewritten.</p>
       </div>
     </div>
-    <!-- Reels on artisan page too -->
-    <section class="reels-section" style="padding-top:0;">
-      <div class="reels-inner">
-        <p class="reels-eyebrow">More Stories</p>
-        <h2 class="reels-title">Watch Our Artisans</h2>
-        <div class="reels-grid">
-          <a href="https://www.instagram.com/reel/DYpbkx0D3mQ/?igsh=b2s0cmV3OHF0ZTZu" target="_blank" class="reel-card">
-            <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/artisan-story.jpg) center/cover;"><div class="reel-thumb-bg" style="opacity:.4;"></div><div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div></div>
-            <div class="reel-info"><p class="reel-label">Reel · 01</p><p class="reel-desc">Her Hands, Her Story</p><p class="reel-ig">@waraempoweringwomen</p></div>
-          </a>
-          <a href="https://www.instagram.com/reel/DW4PZmyibiY/?igsh=NHFlZ2hmaGlhcnV5" target="_blank" class="reel-card">
-            <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/hero.jpg) center/cover;"><div class="reel-thumb-bg" style="opacity:.4;"></div><div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div></div>
-            <div class="reel-info"><p class="reel-label">Reel · 02</p><p class="reel-desc">Craft Passed Through Generations</p><p class="reel-ig">@waraempoweringwomen</p></div>
-          </a>
-          <a href="https://www.instagram.com/reel/DXKJ9imDVJi/?igsh=MWppNGVna2Yyd3NwZg==" target="_blank" class="reel-card">
-            <div class="reel-thumb" style="background:url(https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl03-3.jpg) center/cover;"><div class="reel-thumb-bg" style="opacity:.4;"></div><div class="reel-play"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1L17 10L1 19V1Z" fill="white"/></svg></div></div>
-            <div class="reel-info"><p class="reel-label">Reel · 03</p><p class="reel-desc">Weaving Change, Stitch by Stitch</p><p class="reel-ig">@waraempoweringwomen</p></div>
-          </a>
-        </div>
-      </div>
-    </section>
   </div>
 </div>
 
@@ -814,57 +754,19 @@ const PRODUCTS = [
     badge:'20% Off',badgeCls:'sale',
     colors:['#C9A84C'],
     sizes:['M'],
-    imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-1.jpg'],
-    desc:'A warm, sun-kissed two-piece in rich mustard yellow featuring delicate floral embroidery along the sleeves and neckline placket in orange and olive tones. Crafted by our artisans who pour their hearts into every stitch.',
+    imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-4.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-3.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl19-1.jpg'],
+    desc:'A warm mustard yellow co-ord set with beautiful floral embroidery on the neckline and cuffs — simple, elegant, and effortlessly charming.',
     details:'Fabric: Pure Cotton · 2-Piece: Shirt + Trouser · Embroidery: Sleeve cuffs + neckline placket · Colors: Mustard yellow with orange & olive motifs',
     wash:'Hand wash cold. Hang to dry in shade. Iron on medium heat. Do not bleach.',
     delivery:'4–6 working days'
   }
-  ,{
-    id:'LC030',
-    name:'Olive Gold — Co-ord Set',
-    cat:'coord',
-    price:5597,
-    was:7196,
-    badge:'30% Off',badgeCls:'sale',
-    colors:['#6B7B2E'],
-    sizes:['S','M','L'],
-    imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-3.jpg'],
-    desc:'Olive & cream tie-dye co-ord set with a flowy kurta, side slits, gold chain neckline, and cowrie shell accents. Effortlessly chic for casual days and festive nights alike.',
-    details:'Fabric: Cotton · 2-Piece: Kurta + Trouser · Print: Tie-dye · Neckline: Gold chain with cowrie shells · Sleeve: Full with cuff · Side slits',
-    wash:'Hand wash cold. Do not wring. Dry flat in shade. Iron on low heat.',
-    delivery:'5–7 working days'
-  },
-  {
-    id:'ESL01',
-    name:'Gotta Embroidered 3-Piece Suit',
-    cat:'festive',
-    price:5562,
-    was:7946,
-    badge:'30% Off',badgeCls:'sale',
-    colors:['#F5F0E0'],
-    sizes:['S','M'],
-    imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-3.jpg'],
-    desc:'Elegant ivory white 3-piece suit with intricate silver gotta work embroidery, delicate floral motifs, and stunning multi-color tie-dye dupatta.',
-    details:'Fabric: Premium Cotton · 3-Piece: Shirt + Trouser + Dupatta · Embroidery: Silver gotta work · Dupatta: Multi-color tie-dye · Sleeve: Full',
-    wash:'Dry clean recommended. If hand washing, use cold water only. Do not bleach. Iron on reverse side.',
-    delivery:'5–7 working days'
-  },
-  {
-    id:'ESL09',
-    name:'Hand Embroidered Lawn Shirt',
-    cat:'embroidery',
-    price:4116,
-    was:5879,
-    badge:'30% Off',badgeCls:'sale',
-    colors:['#8B2222'],
-    sizes:['M','L'],
-    imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-3.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-2.jpg'],
-    desc:'Elegant maroon premium lawn shirt with intricate hand embroidered floral motifs, pearl button detailing and beautifully embroidered sleeves.',
-    details:'Fabric: Premium Lawn · 1-Piece: Shirt only · Embroidery: Hand-done floral motifs · Buttons: Pearl detailing · Sleeve: Full with embroidered cuffs',
-    wash:'Hand wash cold or dry clean. Iron on medium heat on reverse side. Do not tumble dry.',
-    delivery:'4–6 working days'
-  }
+  ,{id:'LC030',name:'Olive Gold — Co-ord Set',cat:'coord',price:5597,was:7196,badge:'30% Off',badgeCls:'sale',colors:['#6B7B2E'],sizes:['S','M','L'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc030-3.jpg'],desc:'Olive & cream tie-dye co-ord set with a flowy kurta, side slits, gold chain neckline, and cowrie shell accents.',details:'Fabric: Cotton · 2-Piece: Kurta + Trouser · Print: Tie-dye · Neckline: Gold chain with cowrie shells',wash:'Hand wash cold. Do not wring. Dry flat in shade.',delivery:'5–7 working days'}
+,{id:'ESL01',name:'Gotta Embroidered 3-Piece Suit',cat:'festive',price:5562,was:7946,badge:'30% Off',badgeCls:'sale',colors:['#F5F0E0'],sizes:['S','M'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl01-3.jpg'],desc:'Elegant ivory white 3-piece suit with intricate silver gotta work embroidery, delicate floral motifs, and stunning multi-color tie-dye dupatta.',details:'Fabric: Premium Cotton · 3-Piece: Shirt + Trouser + Dupatta · Embroidery: Silver gotta work · Dupatta: Multi-color tie-dye',wash:'Dry clean recommended. Iron on reverse side.',delivery:'5–7 working days'}
+,{id:'ESL09',name:'Hand Embroidered Lawn Shirt',cat:'embroidery',price:4116,was:5879,badge:'30% Off',badgeCls:'sale',colors:['#8B2222'],sizes:['M','L'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl09-3.jpg'],desc:'Elegant maroon premium lawn shirt with intricate hand embroidered floral motifs, pearl button detailing and beautifully embroidered sleeves.',details:'Fabric: Premium Lawn · 1-Piece: Shirt only · Embroidery: Hand-done floral · Buttons: Pearl detailing',wash:'Hand wash cold or dry clean. Iron on reverse side.',delivery:'4–6 working days'}
+,{id:'BP27',name:'Purple Floral Painted Jeans',cat:'bottoms',price:1894,was:2706,badge:'30% Off',badgeCls:'sale',colors:['#6B3FA0'],sizes:['S'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/bp27-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/bp27-2.jpg'],desc:'Hand-painted sky blue wide-leg jeans featuring bold purple floral artwork. A wearable canvas that turns every outfit into a statement.',details:'Fabric: Denim · Style: Wide-leg · Art: Hand-painted purple floral · 1-Piece',wash:'Hand wash cold inside out. Do not bleach. Hang to dry.',delivery:'4–6 working days'}
+,{id:'ESL20',name:'Turquoise Blue Coord Set',cat:'coord',price:5876,was:7346,badge:'20% Off',badgeCls:'sale',colors:['#00998B'],sizes:['S','M','L'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl20-3.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl20-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/esl20-2.jpg'],desc:'A stunning teal coord set with vibrant autumn leaf digital print, hand-applied crystal & rhinestone embellishment on neckline with delicate beaded sleeve trim.',details:'Fabric: Premium Lawn · 2-Piece · Print: Digital autumn leaf · Embellishment: Crystal & rhinestone',wash:'Hand wash cold. Do not wring. Dry in shade.',delivery:'5–7 working days'}
+,{id:'LC029',name:'Lime Green Coord Set',cat:'coord',price:5682,was:8118,badge:'30% Off',badgeCls:'sale',colors:['#7CB342'],sizes:['S','M','L'],imgs:['https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc029-1.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc029-2.jpg','https://raw.githubusercontent.com/yjyasirjahangeer0044-boop/Wara.pk/main/lc029-3.jpg'],desc:'Fresh lime green fine-stripe shirt adorned with stunning hand-crafted 3D floral embroidery in sky blue & yellow, paired with a breezy wide-leg floral trouser.',details:'Fabric: Fine-stripe Cotton · 2-Piece · Embroidery: 3D hand-crafted floral · Collar: Shirt collar · Trouser: Floral print wide-leg',wash:'Hand wash cold. Dry flat in shade. Iron on medium heat.',delivery:'5–7 working days'}
+
 ];
 
 let cartC=0,wishC=0;
@@ -946,12 +848,14 @@ function openProduct(id){
       <span class="size-chart-link" onclick="document.getElementById('sizeModal').classList.add('open')">View Size Chart →</span>
       <div class="delivery-badge">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A5500" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <div><div class="delivery-badge-txt">Estimated Delivery: ${p.delivery}</div><div class="delivery-badge-sub">Cash on Delivery · Available Nationwide</div></div>
+        <div><div class="delivery-badge-txt">Estimated Delivery: ${p.delivery}</div><div class="delivery-badge-sub">Free Cash on Delivery · Available Nationwide</div></div>
       </div>
-      <button class="btn-cart" id="cartBtn_${p.id}" onclick="cartC++;document.getElementById('cartCount').textContent=cartC;this.textContent='✓ Added to Cart';setTimeout(()=>this.innerHTML='<svg width=\\'16\\' height=\\'16\\' viewBox=\\'0 0 20 20\\' fill=\\'none\\' style=\\'margin-right:8px;vertical-align:-2px\\'><path d=\\'M1 1H3.5L5.5 12H15.5L17.5 5H5\\' stroke=\\'white\\' stroke-width=\\'1.5\\'/><circle cx=\\'8\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/><circle cx=\\'14\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/></svg>Add to Cart',2000)">
+      <button class="btn-cart" id="cartBtn_${p.id}" onclick="var sz=this.closest('.detail-info').querySelector('.sz-btn.active');ATC('${p.id}',sz?sz.textContent:null);this.textContent='✓ Added to Cart';setTimeout(()=>this.innerHTML='<svg width=\\'16\\' height=\\'16\\' viewBox=\\'0 0 20 20\\' fill=\\'none\\' style=\\'margin-right:8px;vertical-align:-2px\\'><path d=\\'M1 1H3.5L5.5 12H15.5L17.5 5H5\\' stroke=\\'white\\' stroke-width=\\'1.5\\'/><circle cx=\\'8\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/><circle cx=\\'14\\' cy=\\'16\\' r=\\'1.5\\' fill=\\'white\\'/></svg>Add to Cart',2000)">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>Add to Cart
       </button>
       <button class="btn-buy" onclick="window.open('https://wa.me/923371856840?text=Hi!+I+want+to+order+${encodeURIComponent(p.name)}+(${p.id})+PKR+${p.price.toLocaleString()}','_blank')">BUY NOW — Only a Few Left! 🔥</button>
+      <p class="pay-or">— or —</p>
+      <button class="btn-pay" onclick="payOnline('${p.id}','${p.name}',${p.price})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Pay Online — Card / Bank</button>
       <div class="share-row">
         <span>Share:</span>
         <button onclick="try{navigator.share({title:'${p.name}',url:window.location.href})}catch(e){navigator.clipboard&&navigator.clipboard.writeText(window.location.href);alert('Link copied!')}">Share Look</button>
@@ -1063,6 +967,21 @@ function RC(){
   if(CI.length===0){f.style.display='none';b.innerHTML='<div class="ce"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:.25"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Your cart is empty</p></div>';return;}
   f.style.display='block';
   b.innerHTML=CI.map(function(i){return '<div class="ci2"><img src="'+i.im+'" alt="'+i.nm+'"><div class="ci2i"><p class="ci2s">#'+i.id+'</p><p class="ci2n">'+i.nm+'</p><p class="ci2s">Size: '+i.sz+'</p><div class="cq"><button onclick="CQ(''+i.id+"','"+i.sz+"',-1)">-</button><span>"+i.q+"</span><button onclick="CQ('"+i.id+"','"+i.sz+"',1)">+</button></div><p class="ci2p">PKR "+(i.pr*i.q).toLocaleString()+"</p></div><button class="ci2r" onclick="RCI('"+i.id+"','"+i.sz+"')">×</button></div>";}).join('');
+}
+</script>
+
+<script>
+function payOnline(pid,name,amt){
+  var f=document.createElement('form');f.method='POST';
+  f.action='https://ipg1.apps.net.pk/Ecommerce/api/Transaction/PostTransaction';
+  f.target='_blank';
+  var d={'MERCHANT_ID':'606161','MERCHANT_NAME':'WARA Empowering Women','PROCCODE':'00',
+    'TXNAMT':String(Math.round(amt*100)),'CUSTOMER_EMAIL_ADDRESS':'wara.official.team@gmail.com',
+    'VERSION':'2.0','TXNDESC':name+' (#'+pid+')','SUCCESS_URL':'https://wara.pk',
+    'FAILURE_URL':'https://wara.pk','BASKET_ID':pid+'-'+Date.now(),
+    'ORDER_DATE':new Date().toISOString().slice(0,10),'CHECKOUT_URL':'https://wara.pk'};
+  for(var k in d){var i=document.createElement('input');i.type='hidden';i.name=k;i.value=d[k];f.appendChild(i);}
+  document.body.appendChild(f);f.submit();document.body.removeChild(f);
 }
 </script>
 </body>
