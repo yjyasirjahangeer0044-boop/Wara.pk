@@ -852,6 +852,10 @@ function openProduct(id){
       </div>
       <button class="btn-cart" onclick="handleAddToCart(this)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART</button>
       <button class="btn-buy" onclick="window.open('https://wa.me/923371856840?text=Hi!+I+want+to+order+${encodeURIComponent(p.name)}+(${p.id})+PKR+${p.price.toLocaleString()}','_blank')">BUY NOW — Only a Few Left! 🔥</button>
+      <button class="btn-cart" style="background:#2D7A2D;margin-top:8px;" onclick="codOrder(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="margin-right:8px;vertical-align:-2px"><path d="M21 4H3a2 2 0 00-2 2v12a2 2 0 002 2h18a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M12 12m-3 0a3 3 0 106 0 3 3 0 10-6 0"/></svg>
+        CASH ON DELIVERY — Free Nationwide
+      </button>
       <p class="pay-or">— or —</p>
       <button class="btn-pay" onclick="payOnline('${p.id}','${p.name}',${p.price})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Pay Online — Card / Bank</button>
       <div class="share-row">
@@ -942,56 +946,100 @@ else if(window.scrollY<=400&&impV){f.classList.remove('vis');impV=false;}});
 
 <script>
 var CI=[];
-function TC(){var o=document.getElementById('CO');o.classList.toggle('open');o.onclick=function(e){if(e.target===o)o.classList.remove('open');};}
+function TC(){
+  var o=document.getElementById('CO');
+  o.classList.toggle('open');
+  o.onclick=function(e){if(e.target===o)o.classList.remove('open');};
+}
 function ATC(pid,sz){
-  var p=PRODUCTS.find(function(x){return x.id===pid;});if(!p)return;
+  var p=null;
+  for(var i=0;i<PRODUCTS.length;i++){if(PRODUCTS[i].id===pid){p=PRODUCTS[i];break;}}
+  if(!p)return;
   var s=sz||p.sizes[0];
-  var ex=CI.find(function(i){return i.id===pid&&i.sz===s;});
+  var ex=null;
+  for(var j=0;j<CI.length;j++){if(CI[j].id===pid&&CI[j].sz===s){ex=CI[j];break;}}
   if(ex){ex.q++;}else{CI.push({id:p.id,nm:p.name,pr:p.price,im:p.imgs[0],sz:s,q:1});}
-  cartC=CI.reduce(function(a,i){return a+i.q;},0);
+  cartC=0;for(var k=0;k<CI.length;k++)cartC+=CI[k].q;
   document.getElementById('cartCount').textContent=cartC;
   RC();TC();
 }
-function RCI(id,sz){CI=CI.filter(function(i){return !(i.id===id&&i.sz===sz);});cartC=CI.reduce(function(a,i){return a+i.q;},0);document.getElementById('cartCount').textContent=cartC;RC();}
-function CQ(id,sz,d){var it=CI.find(function(i){return i.id===id&&i.sz===sz;});if(!it)return;it.q+=d;if(it.q<=0){RCI(id,sz);return;}cartC=CI.reduce(function(a,i){return a+i.q;},0);document.getElementById('cartCount').textContent=cartC;RC();}
+function RCI(id,sz){
+  var newCI=[];
+  for(var i=0;i<CI.length;i++){
+    if(!(CI[i].id===id&&CI[i].sz===sz))newCI.push(CI[i]);
+  }
+  CI=newCI;
+  cartC=0;for(var k=0;k<CI.length;k++)cartC+=CI[k].q;
+  document.getElementById('cartCount').textContent=cartC;
+  RC();
+}
+function CQ(id,sz,d){
+  for(var i=0;i<CI.length;i++){
+    if(CI[i].id===id&&CI[i].sz===sz){
+      CI[i].q+=d;
+      if(CI[i].q<=0){RCI(id,sz);return;}
+      break;
+    }
+  }
+  cartC=0;for(var k=0;k<CI.length;k++)cartC+=CI[k].q;
+  document.getElementById('cartCount').textContent=cartC;
+  RC();
+}
 function RC(){
-  var b=document.getElementById('CB'),f=document.getElementById('CF'),t=CI.reduce(function(a,i){return a+i.pr*i.q;},0);
+  var b=document.getElementById('CB');
+  var f=document.getElementById('CF');
+  var t=0;
+  for(var i=0;i<CI.length;i++)t+=CI[i].pr*CI[i].q;
   document.getElementById('CHC').textContent='('+cartC+')';
   document.getElementById('CT').textContent='PKR '+t.toLocaleString();
   document.getElementById('CW').onclick=function(){
-    var m='Hi! I want to order:\n'+CI.map(function(i){return i.nm+' (#'+i.id+') Size:'+i.sz+' x'+i.q+' = PKR '+(i.pr*i.q).toLocaleString();}).join('\n')+'\nTotal: PKR '+t.toLocaleString();
+    var m='Hi! I want to order:\n';
+    for(var i=0;i<CI.length;i++){
+      m+=CI[i].nm+' (#'+CI[i].id+') Size:'+CI[i].sz+' x'+CI[i].q+' = PKR '+(CI[i].pr*CI[i].q).toLocaleString()+'\n';
+    }
+    m+='Total: PKR '+t.toLocaleString();
     window.open('https://wa.me/923371856840?text='+encodeURIComponent(m),'_blank');
   };
-  if(CI.length===0){f.style.display='none';b.innerHTML='<div class="ce"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:.25"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Your cart is empty</p></div>';return;}
+  if(CI.length===0){
+    f.style.display='none';
+    b.innerHTML='<div class="ce"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:.25"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg><p>Your cart is empty</p></div>';
+    return;
+  }
   f.style.display='block';
-  b.innerHTML=CI.map(function(i){return '<div class="ci2"><img src="'+i.im+'" alt="'+i.nm+'"><div class="ci2i"><p class="ci2s">#'+i.id+'</p><p class="ci2n">'+i.nm+'</p><p class="ci2s">Size: '+i.sz+'</p><div class="cq"><button onclick="CQ(''+i.id+"','"+i.sz+"',-1)">-</button><span>"+i.q+"</span><button onclick="CQ('"+i.id+"','"+i.sz+"',1)">+</button></div><p class="ci2p">PKR "+(i.pr*i.q).toLocaleString()+"</p></div><button class="ci2r" onclick="RCI('"+i.id+"','"+i.sz+"')">×</button></div>";}).join('');
-}
-
-function handleAddToCart(btn) {
-  var idEl = btn.closest('.detail-info').querySelector('.d-id');
-  if (!idEl) return;
-  var pid = idEl.textContent.replace('#', '').trim();
-  var szBtn = btn.closest('.detail-info').querySelector('.sz-btn.active');
-  var sz = szBtn ? szBtn.textContent : null;
-  var p = null;
-  for (var i = 0; i < PRODUCTS.length; i++) {
-    if (PRODUCTS[i].id === pid) { p = PRODUCTS[i]; break; }
+  var h='';
+  for(var i=0;i<CI.length;i++){
+    var c=CI[i];
+    h+='<div class="ci2">';
+    h+='<img src="'+c.im+'" alt="'+c.nm+'">';
+    h+='<div class="ci2i">';
+    h+='<p class="ci2s">#'+c.id+'</p>';
+    h+='<p class="ci2n">'+c.nm+'</p>';
+    h+='<p class="ci2s">Size: '+c.sz+'</p>';
+    h+='<div class="cq">';
+    h+='<button onclick="CQ(\x27'+c.id+'\x27,\x27'+c.sz+'\x27,-1)">-</button>';
+    h+='<span>'+c.q+'</span>';
+    h+='<button onclick="CQ(\x27'+c.id+'\x27,\x27'+c.sz+'\x27,1)">+</button>';
+    h+='</div>';
+    h+='<p class="ci2p">PKR '+(c.pr*c.q).toLocaleString()+'</p>';
+    h+='</div>';
+    h+='<button class="ci2r" onclick="RCI(\x27'+c.id+'\x27,\x27'+c.sz+'\x27)">x</button>';
+    h+='</div>';
   }
-  if (!p) return;
-  var s = sz || p.sizes[0];
-  var found = false;
-  for (var j = 0; j < CI.length; j++) {
-    if (CI[j].id === pid && CI[j].sz === s) { CI[j].q++; found = true; break; }
-  }
-  if (!found) CI.push({id:p.id,nm:p.name,pr:p.price,im:p.imgs[0],sz:s,q:1});
-  cartC = 0;
-  for (var k = 0; k < CI.length; k++) cartC += CI[k].q;
-  document.getElementById('cartCount').textContent = cartC;
-  RC();
-  TC();
-  btn.textContent = 'Added!';
-  setTimeout(function(){ btn.innerHTML='<svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"/><circle cx="8" cy="16" r="1.5" fill="white"/><circle cx="14" cy="16" r="1.5" fill="white"/></svg>ADD TO CART'; }, 2000);
+  b.innerHTML=h;
 }
+function handleAddToCart(btn){
+  var idEl=btn.closest('.detail-info').querySelector('.d-id');
+  if(!idEl)return;
+  var pid=idEl.textContent.replace('#','').trim();
+  var szBtn=btn.closest('.detail-info').querySelector('.sz-btn.active');
+  var sz=szBtn?szBtn.textContent:null;
+  ATC(pid,sz);
+  btn.textContent='Added!';
+  setTimeout(function(){
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="margin-right:8px;vertical-align:-2px"><path d="M1 1H3.5L5.5 12H15.5L17.5 5H5" stroke="white" stroke-width="1.5"></path><circle cx="8" cy="16" r="1.5" fill="white"></circle><circle cx="14" cy="16" r="1.5" fill="white"></circle></svg>ADD TO CART';
+  },2000);
+}
+function addCart(e,id){e.stopPropagation();ATC(id);}
 </script>
 
 <script>
@@ -1040,5 +1088,27 @@ function payOnline(pid,name,amt){
 </script>
 
 
+
+<script>
+function codOrder(btn){
+  var idEl=btn.closest('.detail-info').querySelector('.d-id');
+  var nameEl=btn.closest('.detail-info').querySelector('.d-name');
+  var priceEl=btn.closest('.detail-info').querySelector('.d-price-now');
+  var szBtn=btn.closest('.detail-info').querySelector('.sz-btn.active');
+  if(!idEl||!nameEl)return;
+  var pid=idEl.textContent.replace('#','').trim();
+  var name=nameEl.textContent.trim();
+  var price=priceEl?priceEl.textContent.trim():'';
+  var sz=szBtn?szBtn.textContent:'Not selected';
+  var msg='Hi! I want to place a Cash on Delivery order:\n\n';
+  msg+='Product: '+name+'\n';
+  msg+='ID: #'+pid+'\n';
+  msg+='Size: '+sz+'\n';
+  msg+='Price: '+price+'\n';
+  msg+='Payment: Cash on Delivery\n\n';
+  msg+='Please confirm my order. Thank you!';
+  window.open('https://wa.me/923371856840?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
 </body>
 </html>
